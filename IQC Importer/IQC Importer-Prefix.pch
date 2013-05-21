@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'IQC Importer' target in the 'IQC Importer' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    #import "HEFTConstants.h"
+#endif

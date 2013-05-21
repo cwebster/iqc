@@ -1,0 +1,791 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE14311F174BC92100DC11F2 /* HEFTImporterFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */; };
+		DE143121174C0BF300DC11F2 /* HEFTImportWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE143120174C0BF300DC11F2 /* HEFTImportWindow.xib */; };
+		DE70C24917441B6A0010CEFF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24817441B6A0010CEFF /* Cocoa.framework */; };
+		DE70C25317441B6A0010CEFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE70C25117441B6A0010CEFF /* InfoPlist.strings */; };
+		DE70C25517441B6A0010CEFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C25417441B6A0010CEFF /* main.m */; };
+		DE70C25917441B6A0010CEFF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DE70C25717441B6A0010CEFF /* Credits.rtf */; };
+		DE70C25C17441B6A0010CEFF /* HEFTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C25B17441B6A0010CEFF /* HEFTAppDelegate.m */; };
+		DE70C27417441BB60010CEFF /* HEFT_MySQLPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C26617441BB60010CEFF /* HEFT_MySQLPreferencesController.m */; };
+		DE70C27517441BB60010CEFF /* HEFT_fileutils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C26817441BB60010CEFF /* HEFT_fileutils.m */; };
+		DE70C27617441BB60010CEFF /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C26A17441BB60010CEFF /* ConnectionController.m */; };
+		DE70C27717441BB60010CEFF /* RHPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C26D17441BB60010CEFF /* RHPreferencesWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C27A17441BB60010CEFF /* HEFTImport_Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C27317441BB60010CEFF /* HEFTImport_Controller.m */; };
+		DE70C27D17441BC30010CEFF /* NSString+CSVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C27C17441BC30010CEFF /* NSString+CSVUtils.m */; };
+		DE70C28217441BD80010CEFF /* HEFT_DatabaseFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C27F17441BD80010CEFF /* HEFT_DatabaseFunctions.m */; };
+		DE70C28317441BD80010CEFF /* HEFT_MetricsFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C28117441BD80010CEFF /* HEFT_MetricsFunctions.m */; };
+		DE70C28917441BEA0010CEFF /* HEFT_MySQLPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE70C28617441BEA0010CEFF /* HEFT_MySQLPreferencesController.xib */; };
+		DE70C28E17441BF30010CEFF /* RHAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE70C28A17441BF30010CEFF /* RHAboutViewController.xib */; };
+		DE70C28F17441BF30010CEFF /* RHPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE70C28B17441BF30010CEFF /* RHPreferencesWindow.xib */; };
+		DE70C29417441C000010CEFF /* HEFTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C29317441C000010CEFF /* HEFTConstants.m */; };
+		DE70C29717441C0D0010CEFF /* NSDate+NSDateCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C29617441C0D0010CEFF /* NSDate+NSDateCategory.m */; };
+		DE70C2A317441C240010CEFF /* Timetable.icns in Resources */ = {isa = PBXBuildFile; fileRef = DE70C29817441C240010CEFF /* Timetable.icns */; };
+		DE70C31317441C7F0010CEFF /* MysqlCommitException.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C2B317441C7E0010CEFF /* MysqlCommitException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31417441C7F0010CEFF /* MysqlException.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C2B517441C7E0010CEFF /* MysqlException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31517441C7F0010CEFF /* MysqlRollbackException.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C2B717441C7E0010CEFF /* MysqlRollbackException.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31617441C7F0010CEFF /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C30117441C7F0010CEFF /* libmysqlclient.a */; };
+		DE70C31717441C7F0010CEFF /* MysqlConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30317441C7F0010CEFF /* MysqlConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31817441C7F0010CEFF /* MysqlDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30517441C7F0010CEFF /* MysqlDelete.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31917441C7F0010CEFF /* MysqlFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30717441C7F0010CEFF /* MysqlFetch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31A17441C7F0010CEFF /* MysqlFetchField.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30917441C7F0010CEFF /* MysqlFetchField.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31B17441C7F0010CEFF /* MysqlInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30B17441C7F0010CEFF /* MysqlInsert.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31C17441C7F0010CEFF /* MysqlLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30D17441C7F0010CEFF /* MysqlLiteral.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31D17441C7F0010CEFF /* MysqlUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C30F17441C7F0010CEFF /* MysqlUpdate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C31E17441C7F0010CEFF /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = DE70C31017441C7F0010CEFF /* notes.txt */; };
+		DE70C31F17441C7F0010CEFF /* NSString_MysqlEscape.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C31217441C7F0010CEFF /* NSString_MysqlEscape.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE70C321174424890010CEFF /* RHPreferences.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE70C2AE17441C480010CEFF /* RHPreferences.framework */; };
+		DE70C37C1745389F0010CEFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24D17441B6A0010CEFF /* Foundation.framework */; };
+		DE70C37D174538A30010CEFF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24B17441B6A0010CEFF /* AppKit.framework */; };
+		DE70C37F174538AF0010CEFF /* NetFS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C37E174538AF0010CEFF /* NetFS.framework */; };
+		DEE2CA9E1746B81900967084 /* Alert.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA921746B81900967084 /* Alert.png */; };
+		DEE2CA9F1746B81900967084 /* Apply.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA931746B81900967084 /* Apply.png */; };
+		DEE2CAA01746B81900967084 /* Danger.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA941746B81900967084 /* Danger.png */; };
+		DEE2CAA11746B81900967084 /* Database.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA951746B81900967084 /* Database.png */; };
+		DEE2CAA21746B81900967084 /* Error.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA961746B81900967084 /* Error.png */; };
+		DEE2CAA31746B81900967084 /* No.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA971746B81900967084 /* No.png */; };
+		DEE2CAA41746B81900967084 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA981746B81900967084 /* OK.png */; };
+		DEE2CAA51746B81900967084 /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA991746B81900967084 /* Play.png */; };
+		DEE2CAA61746B81900967084 /* Problem.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA9A1746B81900967084 /* Problem.png */; };
+		DEE2CAA71746B81900967084 /* Question.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA9B1746B81900967084 /* Question.png */; };
+		DEE2CAA81746B81900967084 /* Warning.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA9C1746B81900967084 /* Warning.png */; };
+		DEE2CAA91746B81900967084 /* Yes.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CA9D1746B81900967084 /* Yes.png */; };
+		DEE2CAAC1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2CAAB1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m */; };
+		DEE2CAB01746C18E00967084 /* HEFTAMSServerPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CAAF1746C18E00967084 /* HEFTAMSServerPreferencesView.xib */; };
+		DEE2CAB31746C51F00967084 /* HEFTAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2CAB21746C51F00967084 /* HEFTAboutViewController.m */; };
+		DEE2CABB174A64F800967084 /* HEFTMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2CABA174A64F800967084 /* HEFTMainWindowController.m */; };
+		DEE2CABD174A68BB00967084 /* HEFTIQCMainWIndow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CABC174A68BB00967084 /* HEFTIQCMainWIndow.xib */; };
+		DEE2CABF174A6D8200967084 /* Application.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CABE174A6D8200967084 /* Application.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DE70C320174423CD0010CEFF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DE70C321174424890010CEFF /* RHPreferences.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DE14311D174BC92100DC11F2 /* HEFTImporterFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTImporterFunctions.h; sourceTree = "<group>"; };
+		DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTImporterFunctions.m; sourceTree = "<group>"; };
+		DE143120174C0BF300DC11F2 /* HEFTImportWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTImportWindow.xib; sourceTree = "<group>"; };
+		DE70C24517441B6A0010CEFF /* IQC Importer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IQC Importer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE70C24817441B6A0010CEFF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DE70C24B17441B6A0010CEFF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DE70C24D17441B6A0010CEFF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DE70C25017441B6A0010CEFF /* IQC Importer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQC Importer-Info.plist"; sourceTree = "<group>"; };
+		DE70C25217441B6A0010CEFF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE70C25417441B6A0010CEFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE70C25617441B6A0010CEFF /* IQC Importer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQC Importer-Prefix.pch"; sourceTree = "<group>"; };
+		DE70C25817441B6A0010CEFF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		DE70C25A17441B6A0010CEFF /* HEFTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HEFTAppDelegate.h; sourceTree = "<group>"; };
+		DE70C25B17441B6A0010CEFF /* HEFTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HEFTAppDelegate.m; sourceTree = "<group>"; };
+		DE70C26517441BB60010CEFF /* HEFT_MySQLPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFT_MySQLPreferencesController.h; sourceTree = "<group>"; };
+		DE70C26617441BB60010CEFF /* HEFT_MySQLPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFT_MySQLPreferencesController.m; sourceTree = "<group>"; };
+		DE70C26717441BB60010CEFF /* HEFT_fileutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HEFT_fileutils.h; path = ../HEFT_fileutils.h; sourceTree = "<group>"; };
+		DE70C26817441BB60010CEFF /* HEFT_fileutils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HEFT_fileutils.m; path = ../HEFT_fileutils.m; sourceTree = "<group>"; };
+		DE70C26917441BB60010CEFF /* ConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
+		DE70C26A17441BB60010CEFF /* ConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
+		DE70C26B17441BB60010CEFF /* RHPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RHPreferences.h; path = ../RHPreferences.h; sourceTree = "<group>"; };
+		DE70C26C17441BB60010CEFF /* RHPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHPreferencesWindowController.h; sourceTree = "<group>"; };
+		DE70C26D17441BB60010CEFF /* RHPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHPreferencesWindowController.m; sourceTree = "<group>"; };
+		DE70C27217441BB60010CEFF /* HEFTImport_Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTImport_Controller.h; sourceTree = "<group>"; };
+		DE70C27317441BB60010CEFF /* HEFTImport_Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTImport_Controller.m; sourceTree = "<group>"; };
+		DE70C27B17441BC30010CEFF /* NSString+CSVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CSVUtils.h"; path = "../NSString+CSVUtils.h"; sourceTree = "<group>"; };
+		DE70C27C17441BC30010CEFF /* NSString+CSVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CSVUtils.m"; path = "../NSString+CSVUtils.m"; sourceTree = "<group>"; };
+		DE70C27E17441BD80010CEFF /* HEFT_DatabaseFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFT_DatabaseFunctions.h; sourceTree = "<group>"; };
+		DE70C27F17441BD80010CEFF /* HEFT_DatabaseFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFT_DatabaseFunctions.m; sourceTree = "<group>"; };
+		DE70C28017441BD80010CEFF /* HEFT_MetricsFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HEFT_MetricsFunctions.h; path = ../HEFT_MetricsFunctions.h; sourceTree = "<group>"; };
+		DE70C28117441BD80010CEFF /* HEFT_MetricsFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HEFT_MetricsFunctions.m; path = ../HEFT_MetricsFunctions.m; sourceTree = "<group>"; };
+		DE70C28617441BEA0010CEFF /* HEFT_MySQLPreferencesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFT_MySQLPreferencesController.xib; sourceTree = "<group>"; };
+		DE70C28A17441BF30010CEFF /* RHAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHAboutViewController.xib; sourceTree = "<group>"; };
+		DE70C28B17441BF30010CEFF /* RHPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RHPreferencesWindow.xib; sourceTree = "<group>"; };
+		DE70C29217441C000010CEFF /* HEFTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HEFTConstants.h; path = ../HEFTConstants.h; sourceTree = "<group>"; };
+		DE70C29317441C000010CEFF /* HEFTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HEFTConstants.m; path = ../HEFTConstants.m; sourceTree = "<group>"; };
+		DE70C29517441C0D0010CEFF /* NSDate+NSDateCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+NSDateCategory.h"; path = "../NSDate+NSDateCategory.h"; sourceTree = "<group>"; };
+		DE70C29617441C0D0010CEFF /* NSDate+NSDateCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+NSDateCategory.m"; path = "../NSDate+NSDateCategory.m"; sourceTree = "<group>"; };
+		DE70C29817441C240010CEFF /* Timetable.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Timetable.icns; path = ../Timetable.icns; sourceTree = "<group>"; };
+		DE70C2AE17441C480010CEFF /* RHPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RHPreferences.framework; sourceTree = "<group>"; };
+		DE70C2B217441C7E0010CEFF /* MysqlCommitException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlCommitException.h; sourceTree = "<group>"; };
+		DE70C2B317441C7E0010CEFF /* MysqlCommitException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlCommitException.m; sourceTree = "<group>"; };
+		DE70C2B417441C7E0010CEFF /* MysqlException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlException.h; sourceTree = "<group>"; };
+		DE70C2B517441C7E0010CEFF /* MysqlException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlException.m; sourceTree = "<group>"; };
+		DE70C2B617441C7E0010CEFF /* MysqlRollbackException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlRollbackException.h; sourceTree = "<group>"; };
+		DE70C2B717441C7E0010CEFF /* MysqlRollbackException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlRollbackException.m; sourceTree = "<group>"; };
+		DE70C2B817441C7E0010CEFF /* GC_MYSQL_BIND.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GC_MYSQL_BIND.h; sourceTree = "<group>"; };
+		DE70C2BB17441C7E0010CEFF /* gcc_builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcc_builtins.h; sourceTree = "<group>"; };
+		DE70C2BC17441C7E0010CEFF /* generic-msvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "generic-msvc.h"; sourceTree = "<group>"; };
+		DE70C2BD17441C7E0010CEFF /* nolock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nolock.h; sourceTree = "<group>"; };
+		DE70C2BE17441C7E0010CEFF /* rwlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rwlock.h; sourceTree = "<group>"; };
+		DE70C2BF17441C7E0010CEFF /* x86-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "x86-gcc.h"; sourceTree = "<group>"; };
+		DE70C2C017441C7E0010CEFF /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		DE70C2C117441C7E0010CEFF /* config-win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "config-win.h"; sourceTree = "<group>"; };
+		DE70C2C217441C7E0010CEFF /* decimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decimal.h; sourceTree = "<group>"; };
+		DE70C2C317441C7E0010CEFF /* errmsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errmsg.h; sourceTree = "<group>"; };
+		DE70C2C417441C7E0010CEFF /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		DE70C2C517441C7E0010CEFF /* keycache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keycache.h; sourceTree = "<group>"; };
+		DE70C2C617441C7E0010CEFF /* lf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lf.h; sourceTree = "<group>"; };
+		DE70C2C717441C7E0010CEFF /* m_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_ctype.h; sourceTree = "<group>"; };
+		DE70C2C817441C7E0010CEFF /* m_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_string.h; sourceTree = "<group>"; };
+		DE70C2C917441C7E0010CEFF /* my_aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_aes.h; sourceTree = "<group>"; };
+		DE70C2CA17441C7E0010CEFF /* my_alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_alarm.h; sourceTree = "<group>"; };
+		DE70C2CB17441C7E0010CEFF /* my_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_alloc.h; sourceTree = "<group>"; };
+		DE70C2CC17441C7E0010CEFF /* my_atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_atomic.h; sourceTree = "<group>"; };
+		DE70C2CD17441C7E0010CEFF /* my_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_attribute.h; sourceTree = "<group>"; };
+		DE70C2CE17441C7E0010CEFF /* my_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_base.h; sourceTree = "<group>"; };
+		DE70C2CF17441C7E0010CEFF /* my_bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_bit.h; sourceTree = "<group>"; };
+		DE70C2D017441C7E0010CEFF /* my_bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_bitmap.h; sourceTree = "<group>"; };
+		DE70C2D117441C7E0010CEFF /* my_charsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_charsets.h; sourceTree = "<group>"; };
+		DE70C2D217441C7E0010CEFF /* my_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_config.h; sourceTree = "<group>"; };
+		DE70C2D317441C7E0010CEFF /* my_dbug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_dbug.h; sourceTree = "<group>"; };
+		DE70C2D417441C7E0010CEFF /* my_dir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_dir.h; sourceTree = "<group>"; };
+		DE70C2D517441C7E0010CEFF /* my_getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_getopt.h; sourceTree = "<group>"; };
+		DE70C2D617441C7E0010CEFF /* my_global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_global.h; sourceTree = "<group>"; };
+		DE70C2D717441C7E0010CEFF /* my_libwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_libwrap.h; sourceTree = "<group>"; };
+		DE70C2D817441C7E0010CEFF /* my_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_list.h; sourceTree = "<group>"; };
+		DE70C2D917441C7E0010CEFF /* my_md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_md5.h; sourceTree = "<group>"; };
+		DE70C2DA17441C7E0010CEFF /* my_net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_net.h; sourceTree = "<group>"; };
+		DE70C2DB17441C7E0010CEFF /* my_no_pthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_no_pthread.h; sourceTree = "<group>"; };
+		DE70C2DC17441C7E0010CEFF /* my_nosys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_nosys.h; sourceTree = "<group>"; };
+		DE70C2DD17441C7E0010CEFF /* my_pthread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_pthread.h; sourceTree = "<group>"; };
+		DE70C2DE17441C7E0010CEFF /* my_stacktrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_stacktrace.h; sourceTree = "<group>"; };
+		DE70C2DF17441C7E0010CEFF /* my_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_sys.h; sourceTree = "<group>"; };
+		DE70C2E017441C7E0010CEFF /* my_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_time.h; sourceTree = "<group>"; };
+		DE70C2E117441C7E0010CEFF /* my_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_tree.h; sourceTree = "<group>"; };
+		DE70C2E217441C7E0010CEFF /* my_trie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_trie.h; sourceTree = "<group>"; };
+		DE70C2E317441C7E0010CEFF /* my_uctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_uctype.h; sourceTree = "<group>"; };
+		DE70C2E417441C7E0010CEFF /* my_vle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_vle.h; sourceTree = "<group>"; };
+		DE70C2E517441C7E0010CEFF /* my_xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = my_xml.h; sourceTree = "<group>"; };
+		DE70C2E617441C7E0010CEFF /* myisampack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myisampack.h; sourceTree = "<group>"; };
+		DE70C2E717441C7E0010CEFF /* mysql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql.h; sourceTree = "<group>"; };
+		DE70C2E817441C7E0010CEFF /* mysql_32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_32.h; sourceTree = "<group>"; };
+		DE70C2E917441C7E0010CEFF /* mysql_64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_64.h; sourceTree = "<group>"; };
+		DE70C2EA17441C7E0010CEFF /* mysql_com.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_com.h; sourceTree = "<group>"; };
+		DE70C2EB17441C7E0010CEFF /* mysql_time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_time.h; sourceTree = "<group>"; };
+		DE70C2EC17441C7E0010CEFF /* mysql_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysql_version.h; sourceTree = "<group>"; };
+		DE70C2ED17441C7E0010CEFF /* mysqld_error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysqld_error.h; sourceTree = "<group>"; };
+		DE70C2EF17441C7E0010CEFF /* rijndael.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rijndael.h; sourceTree = "<group>"; };
+		DE70C2F017441C7E0010CEFF /* mysys_err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mysys_err.h; sourceTree = "<group>"; };
+		DE70C2F117441C7E0010CEFF /* queues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queues.h; sourceTree = "<group>"; };
+		DE70C2F217441C7E0010CEFF /* service_versions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = service_versions.h; sourceTree = "<group>"; };
+		DE70C2F317441C7E0010CEFF /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		DE70C2F417441C7E0010CEFF /* sha2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha2.h; sourceTree = "<group>"; };
+		DE70C2F517441C7E0010CEFF /* sql_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sql_common.h; sourceTree = "<group>"; };
+		DE70C2F617441C7F0010CEFF /* sslopt-case.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-case.h"; sourceTree = "<group>"; };
+		DE70C2F717441C7F0010CEFF /* sslopt-longopts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-longopts.h"; sourceTree = "<group>"; };
+		DE70C2F817441C7F0010CEFF /* sslopt-vars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "sslopt-vars.h"; sourceTree = "<group>"; };
+		DE70C2F917441C7F0010CEFF /* t_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t_ctype.h; sourceTree = "<group>"; };
+		DE70C2FA17441C7F0010CEFF /* thr_alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thr_alarm.h; sourceTree = "<group>"; };
+		DE70C2FB17441C7F0010CEFF /* thr_lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thr_lock.h; sourceTree = "<group>"; };
+		DE70C2FC17441C7F0010CEFF /* typelib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typelib.h; sourceTree = "<group>"; };
+		DE70C2FD17441C7F0010CEFF /* violite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = violite.h; sourceTree = "<group>"; };
+		DE70C2FE17441C7F0010CEFF /* waiting_threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = waiting_threads.h; sourceTree = "<group>"; };
+		DE70C2FF17441C7F0010CEFF /* wqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wqueue.h; sourceTree = "<group>"; };
+		DE70C30117441C7F0010CEFF /* libmysqlclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmysqlclient.a; sourceTree = "<group>"; };
+		DE70C30217441C7F0010CEFF /* MysqlConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlConnection.h; sourceTree = "<group>"; };
+		DE70C30317441C7F0010CEFF /* MysqlConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlConnection.m; sourceTree = "<group>"; };
+		DE70C30417441C7F0010CEFF /* MysqlDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlDelete.h; sourceTree = "<group>"; };
+		DE70C30517441C7F0010CEFF /* MysqlDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlDelete.m; sourceTree = "<group>"; };
+		DE70C30617441C7F0010CEFF /* MysqlFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlFetch.h; sourceTree = "<group>"; };
+		DE70C30717441C7F0010CEFF /* MysqlFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlFetch.m; sourceTree = "<group>"; };
+		DE70C30817441C7F0010CEFF /* MysqlFetchField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlFetchField.h; sourceTree = "<group>"; };
+		DE70C30917441C7F0010CEFF /* MysqlFetchField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlFetchField.m; sourceTree = "<group>"; };
+		DE70C30A17441C7F0010CEFF /* MysqlInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlInsert.h; sourceTree = "<group>"; };
+		DE70C30B17441C7F0010CEFF /* MysqlInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlInsert.m; sourceTree = "<group>"; };
+		DE70C30C17441C7F0010CEFF /* MysqlLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlLiteral.h; sourceTree = "<group>"; };
+		DE70C30D17441C7F0010CEFF /* MysqlLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlLiteral.m; sourceTree = "<group>"; };
+		DE70C30E17441C7F0010CEFF /* MysqlUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysqlUpdate.h; sourceTree = "<group>"; };
+		DE70C30F17441C7F0010CEFF /* MysqlUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysqlUpdate.m; sourceTree = "<group>"; };
+		DE70C31017441C7F0010CEFF /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
+		DE70C31117441C7F0010CEFF /* NSString_MysqlEscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_MysqlEscape.h; sourceTree = "<group>"; };
+		DE70C31217441C7F0010CEFF /* NSString_MysqlEscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_MysqlEscape.m; sourceTree = "<group>"; };
+		DE70C37E174538AF0010CEFF /* NetFS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetFS.framework; path = System/Library/Frameworks/NetFS.framework; sourceTree = SDKROOT; };
+		DEE2CA921746B81900967084 /* Alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Alert.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Alert.png"; sourceTree = "<group>"; };
+		DEE2CA931746B81900967084 /* Apply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Apply.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Apply.png"; sourceTree = "<group>"; };
+		DEE2CA941746B81900967084 /* Danger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Danger.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Danger.png"; sourceTree = "<group>"; };
+		DEE2CA951746B81900967084 /* Database.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Database.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Database.png"; sourceTree = "<group>"; };
+		DEE2CA961746B81900967084 /* Error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Error.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Error.png"; sourceTree = "<group>"; };
+		DEE2CA971746B81900967084 /* No.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = No.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/No.png"; sourceTree = "<group>"; };
+		DEE2CA981746B81900967084 /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OK.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/OK.png"; sourceTree = "<group>"; };
+		DEE2CA991746B81900967084 /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Play.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Play.png"; sourceTree = "<group>"; };
+		DEE2CA9A1746B81900967084 /* Problem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Problem.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Problem.png"; sourceTree = "<group>"; };
+		DEE2CA9B1746B81900967084 /* Question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Question.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Question.png"; sourceTree = "<group>"; };
+		DEE2CA9C1746B81900967084 /* Warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Warning.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Warning.png"; sourceTree = "<group>"; };
+		DEE2CA9D1746B81900967084 /* Yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Yes.png; path = "../../../../../Downloads/16x16-free-application-icons/png/16x16/Yes.png"; sourceTree = "<group>"; };
+		DEE2CAAA1746BA9400967084 /* HEFTAMSSharePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTAMSSharePreferencesViewController.h; sourceTree = "<group>"; };
+		DEE2CAAB1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTAMSSharePreferencesViewController.m; sourceTree = "<group>"; };
+		DEE2CAAF1746C18E00967084 /* HEFTAMSServerPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTAMSServerPreferencesView.xib; sourceTree = "<group>"; };
+		DEE2CAB11746C51F00967084 /* HEFTAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTAboutViewController.h; sourceTree = "<group>"; };
+		DEE2CAB21746C51F00967084 /* HEFTAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTAboutViewController.m; sourceTree = "<group>"; };
+		DEE2CAB9174A64F800967084 /* HEFTMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTMainWindowController.h; sourceTree = "<group>"; };
+		DEE2CABA174A64F800967084 /* HEFTMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTMainWindowController.m; sourceTree = "<group>"; };
+		DEE2CABC174A68BB00967084 /* HEFTIQCMainWIndow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTIQCMainWIndow.xib; sourceTree = "<group>"; };
+		DEE2CABE174A6D8200967084 /* Application.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Application.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE70C24217441B6A0010CEFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE70C37F174538AF0010CEFF /* NetFS.framework in Frameworks */,
+				DE70C24917441B6A0010CEFF /* Cocoa.framework in Frameworks */,
+				DE70C37D174538A30010CEFF /* AppKit.framework in Frameworks */,
+				DE70C31617441C7F0010CEFF /* libmysqlclient.a in Frameworks */,
+				DE70C37C1745389F0010CEFF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE70C23C17441B6A0010CEFF = {
+			isa = PBXGroup;
+			children = (
+				DE70C24F17441B6A0010CEFF /* Supporting Files */,
+				DE70C324174426080010CEFF /* Models */,
+				DE70C3231744258E0010CEFF /* controllers */,
+				DE70C322174425730010CEFF /* Views */,
+				DE70C24E17441B6A0010CEFF /* IQC Importer */,
+				DE70C24717441B6A0010CEFF /* Frameworks */,
+				DE70C24617441B6A0010CEFF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE70C24617441B6A0010CEFF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C24517441B6A0010CEFF /* IQC Importer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE70C24717441B6A0010CEFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C37E174538AF0010CEFF /* NetFS.framework */,
+				DE70C24D17441B6A0010CEFF /* Foundation.framework */,
+				DE70C24B17441B6A0010CEFF /* AppKit.framework */,
+				DE70C24817441B6A0010CEFF /* Cocoa.framework */,
+				DE70C24A17441B6A0010CEFF /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE70C24A17441B6A0010CEFF /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2AE17441C480010CEFF /* RHPreferences.framework */,
+				DE70C2B017441C7E0010CEFF /* Objc_Mysql_iPhone_OSX */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		DE70C24E17441B6A0010CEFF /* IQC Importer */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C25A17441B6A0010CEFF /* HEFTAppDelegate.h */,
+				DE70C25B17441B6A0010CEFF /* HEFTAppDelegate.m */,
+			);
+			path = "IQC Importer";
+			sourceTree = "<group>";
+		};
+		DE70C24F17441B6A0010CEFF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2CABE174A6D8200967084 /* Application.png */,
+				DEE2CA921746B81900967084 /* Alert.png */,
+				DEE2CA931746B81900967084 /* Apply.png */,
+				DEE2CA941746B81900967084 /* Danger.png */,
+				DEE2CA951746B81900967084 /* Database.png */,
+				DEE2CA961746B81900967084 /* Error.png */,
+				DEE2CA971746B81900967084 /* No.png */,
+				DEE2CA981746B81900967084 /* OK.png */,
+				DEE2CA991746B81900967084 /* Play.png */,
+				DEE2CA9A1746B81900967084 /* Problem.png */,
+				DEE2CA9B1746B81900967084 /* Question.png */,
+				DEE2CA9C1746B81900967084 /* Warning.png */,
+				DEE2CA9D1746B81900967084 /* Yes.png */,
+				DE70C28017441BD80010CEFF /* HEFT_MetricsFunctions.h */,
+				DE70C28117441BD80010CEFF /* HEFT_MetricsFunctions.m */,
+				DE70C29517441C0D0010CEFF /* NSDate+NSDateCategory.h */,
+				DE70C29617441C0D0010CEFF /* NSDate+NSDateCategory.m */,
+				DE70C29217441C000010CEFF /* HEFTConstants.h */,
+				DE70C29317441C000010CEFF /* HEFTConstants.m */,
+				DE70C26717441BB60010CEFF /* HEFT_fileutils.h */,
+				DE70C26817441BB60010CEFF /* HEFT_fileutils.m */,
+				DE70C26B17441BB60010CEFF /* RHPreferences.h */,
+				DE70C27B17441BC30010CEFF /* NSString+CSVUtils.h */,
+				DE70C27C17441BC30010CEFF /* NSString+CSVUtils.m */,
+				DE70C29817441C240010CEFF /* Timetable.icns */,
+				DE70C25017441B6A0010CEFF /* IQC Importer-Info.plist */,
+				DE70C25117441B6A0010CEFF /* InfoPlist.strings */,
+				DE70C25417441B6A0010CEFF /* main.m */,
+				DE70C25617441B6A0010CEFF /* IQC Importer-Prefix.pch */,
+				DE70C25717441B6A0010CEFF /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			path = "IQC Importer";
+			sourceTree = "<group>";
+		};
+		DE70C2B017441C7E0010CEFF /* Objc_Mysql_iPhone_OSX */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2B117441C7E0010CEFF /* Exceptions */,
+				DE70C2B817441C7E0010CEFF /* GC_MYSQL_BIND.h */,
+				DE70C2B917441C7E0010CEFF /* include */,
+				DE70C30017441C7F0010CEFF /* lib */,
+				DE70C30217441C7F0010CEFF /* MysqlConnection.h */,
+				DE70C30317441C7F0010CEFF /* MysqlConnection.m */,
+				DE70C30417441C7F0010CEFF /* MysqlDelete.h */,
+				DE70C30517441C7F0010CEFF /* MysqlDelete.m */,
+				DE70C30617441C7F0010CEFF /* MysqlFetch.h */,
+				DE70C30717441C7F0010CEFF /* MysqlFetch.m */,
+				DE70C30817441C7F0010CEFF /* MysqlFetchField.h */,
+				DE70C30917441C7F0010CEFF /* MysqlFetchField.m */,
+				DE70C30A17441C7F0010CEFF /* MysqlInsert.h */,
+				DE70C30B17441C7F0010CEFF /* MysqlInsert.m */,
+				DE70C30C17441C7F0010CEFF /* MysqlLiteral.h */,
+				DE70C30D17441C7F0010CEFF /* MysqlLiteral.m */,
+				DE70C30E17441C7F0010CEFF /* MysqlUpdate.h */,
+				DE70C30F17441C7F0010CEFF /* MysqlUpdate.m */,
+				DE70C31017441C7F0010CEFF /* notes.txt */,
+				DE70C31117441C7F0010CEFF /* NSString_MysqlEscape.h */,
+				DE70C31217441C7F0010CEFF /* NSString_MysqlEscape.m */,
+			);
+			name = Objc_Mysql_iPhone_OSX;
+			path = "IQC Importer/Objc_Mysql_iPhone_OSX";
+			sourceTree = "<group>";
+		};
+		DE70C2B117441C7E0010CEFF /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2B217441C7E0010CEFF /* MysqlCommitException.h */,
+				DE70C2B317441C7E0010CEFF /* MysqlCommitException.m */,
+				DE70C2B417441C7E0010CEFF /* MysqlException.h */,
+				DE70C2B517441C7E0010CEFF /* MysqlException.m */,
+				DE70C2B617441C7E0010CEFF /* MysqlRollbackException.h */,
+				DE70C2B717441C7E0010CEFF /* MysqlRollbackException.m */,
+			);
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
+		DE70C2B917441C7E0010CEFF /* include */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2BA17441C7E0010CEFF /* atomic */,
+				DE70C2C017441C7E0010CEFF /* base64.h */,
+				DE70C2C117441C7E0010CEFF /* config-win.h */,
+				DE70C2C217441C7E0010CEFF /* decimal.h */,
+				DE70C2C317441C7E0010CEFF /* errmsg.h */,
+				DE70C2C417441C7E0010CEFF /* hash.h */,
+				DE70C2C517441C7E0010CEFF /* keycache.h */,
+				DE70C2C617441C7E0010CEFF /* lf.h */,
+				DE70C2C717441C7E0010CEFF /* m_ctype.h */,
+				DE70C2C817441C7E0010CEFF /* m_string.h */,
+				DE70C2C917441C7E0010CEFF /* my_aes.h */,
+				DE70C2CA17441C7E0010CEFF /* my_alarm.h */,
+				DE70C2CB17441C7E0010CEFF /* my_alloc.h */,
+				DE70C2CC17441C7E0010CEFF /* my_atomic.h */,
+				DE70C2CD17441C7E0010CEFF /* my_attribute.h */,
+				DE70C2CE17441C7E0010CEFF /* my_base.h */,
+				DE70C2CF17441C7E0010CEFF /* my_bit.h */,
+				DE70C2D017441C7E0010CEFF /* my_bitmap.h */,
+				DE70C2D117441C7E0010CEFF /* my_charsets.h */,
+				DE70C2D217441C7E0010CEFF /* my_config.h */,
+				DE70C2D317441C7E0010CEFF /* my_dbug.h */,
+				DE70C2D417441C7E0010CEFF /* my_dir.h */,
+				DE70C2D517441C7E0010CEFF /* my_getopt.h */,
+				DE70C2D617441C7E0010CEFF /* my_global.h */,
+				DE70C2D717441C7E0010CEFF /* my_libwrap.h */,
+				DE70C2D817441C7E0010CEFF /* my_list.h */,
+				DE70C2D917441C7E0010CEFF /* my_md5.h */,
+				DE70C2DA17441C7E0010CEFF /* my_net.h */,
+				DE70C2DB17441C7E0010CEFF /* my_no_pthread.h */,
+				DE70C2DC17441C7E0010CEFF /* my_nosys.h */,
+				DE70C2DD17441C7E0010CEFF /* my_pthread.h */,
+				DE70C2DE17441C7E0010CEFF /* my_stacktrace.h */,
+				DE70C2DF17441C7E0010CEFF /* my_sys.h */,
+				DE70C2E017441C7E0010CEFF /* my_time.h */,
+				DE70C2E117441C7E0010CEFF /* my_tree.h */,
+				DE70C2E217441C7E0010CEFF /* my_trie.h */,
+				DE70C2E317441C7E0010CEFF /* my_uctype.h */,
+				DE70C2E417441C7E0010CEFF /* my_vle.h */,
+				DE70C2E517441C7E0010CEFF /* my_xml.h */,
+				DE70C2E617441C7E0010CEFF /* myisampack.h */,
+				DE70C2E717441C7E0010CEFF /* mysql.h */,
+				DE70C2E817441C7E0010CEFF /* mysql_32.h */,
+				DE70C2E917441C7E0010CEFF /* mysql_64.h */,
+				DE70C2EA17441C7E0010CEFF /* mysql_com.h */,
+				DE70C2EB17441C7E0010CEFF /* mysql_time.h */,
+				DE70C2EC17441C7E0010CEFF /* mysql_version.h */,
+				DE70C2ED17441C7E0010CEFF /* mysqld_error.h */,
+				DE70C2EE17441C7E0010CEFF /* mysys */,
+				DE70C2F017441C7E0010CEFF /* mysys_err.h */,
+				DE70C2F117441C7E0010CEFF /* queues.h */,
+				DE70C2F217441C7E0010CEFF /* service_versions.h */,
+				DE70C2F317441C7E0010CEFF /* sha1.h */,
+				DE70C2F417441C7E0010CEFF /* sha2.h */,
+				DE70C2F517441C7E0010CEFF /* sql_common.h */,
+				DE70C2F617441C7F0010CEFF /* sslopt-case.h */,
+				DE70C2F717441C7F0010CEFF /* sslopt-longopts.h */,
+				DE70C2F817441C7F0010CEFF /* sslopt-vars.h */,
+				DE70C2F917441C7F0010CEFF /* t_ctype.h */,
+				DE70C2FA17441C7F0010CEFF /* thr_alarm.h */,
+				DE70C2FB17441C7F0010CEFF /* thr_lock.h */,
+				DE70C2FC17441C7F0010CEFF /* typelib.h */,
+				DE70C2FD17441C7F0010CEFF /* violite.h */,
+				DE70C2FE17441C7F0010CEFF /* waiting_threads.h */,
+				DE70C2FF17441C7F0010CEFF /* wqueue.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		DE70C2BA17441C7E0010CEFF /* atomic */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2BB17441C7E0010CEFF /* gcc_builtins.h */,
+				DE70C2BC17441C7E0010CEFF /* generic-msvc.h */,
+				DE70C2BD17441C7E0010CEFF /* nolock.h */,
+				DE70C2BE17441C7E0010CEFF /* rwlock.h */,
+				DE70C2BF17441C7E0010CEFF /* x86-gcc.h */,
+			);
+			path = atomic;
+			sourceTree = "<group>";
+		};
+		DE70C2EE17441C7E0010CEFF /* mysys */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C2EF17441C7E0010CEFF /* rijndael.h */,
+			);
+			path = mysys;
+			sourceTree = "<group>";
+		};
+		DE70C30017441C7F0010CEFF /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C30117441C7F0010CEFF /* libmysqlclient.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		DE70C322174425730010CEFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2CAAF1746C18E00967084 /* HEFTAMSServerPreferencesView.xib */,
+				DE70C28617441BEA0010CEFF /* HEFT_MySQLPreferencesController.xib */,
+				DE70C28A17441BF30010CEFF /* RHAboutViewController.xib */,
+				DE70C28B17441BF30010CEFF /* RHPreferencesWindow.xib */,
+				DEE2CABC174A68BB00967084 /* HEFTIQCMainWIndow.xib */,
+				DE143120174C0BF300DC11F2 /* HEFTImportWindow.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DE70C3231744258E0010CEFF /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DEE2CAB9174A64F800967084 /* HEFTMainWindowController.h */,
+				DEE2CABA174A64F800967084 /* HEFTMainWindowController.m */,
+				DE14311D174BC92100DC11F2 /* HEFTImporterFunctions.h */,
+				DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */,
+				DE70C27217441BB60010CEFF /* HEFTImport_Controller.h */,
+				DE70C27317441BB60010CEFF /* HEFTImport_Controller.m */,
+				DE70C26C17441BB60010CEFF /* RHPreferencesWindowController.h */,
+				DE70C26D17441BB60010CEFF /* RHPreferencesWindowController.m */,
+				DE70C26917441BB60010CEFF /* ConnectionController.h */,
+				DE70C26A17441BB60010CEFF /* ConnectionController.m */,
+				DE70C26517441BB60010CEFF /* HEFT_MySQLPreferencesController.h */,
+				DEE2CAAA1746BA9400967084 /* HEFTAMSSharePreferencesViewController.h */,
+				DEE2CAAB1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m */,
+				DE70C26617441BB60010CEFF /* HEFT_MySQLPreferencesController.m */,
+				DEE2CAB11746C51F00967084 /* HEFTAboutViewController.h */,
+				DEE2CAB21746C51F00967084 /* HEFTAboutViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		DE70C324174426080010CEFF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE70C27E17441BD80010CEFF /* HEFT_DatabaseFunctions.h */,
+				DE70C27F17441BD80010CEFF /* HEFT_DatabaseFunctions.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE70C24417441B6A0010CEFF /* IQC Importer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE70C26217441B6A0010CEFF /* Build configuration list for PBXNativeTarget "IQC Importer" */;
+			buildPhases = (
+				DE70C24117441B6A0010CEFF /* Sources */,
+				DE70C24217441B6A0010CEFF /* Frameworks */,
+				DE70C24317441B6A0010CEFF /* Resources */,
+				DE70C320174423CD0010CEFF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IQC Importer";
+			productName = "IQC Importer";
+			productReference = DE70C24517441B6A0010CEFF /* IQC Importer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE70C23D17441B6A0010CEFF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HEFT;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Craig Webster";
+			};
+			buildConfigurationList = DE70C24017441B6A0010CEFF /* Build configuration list for PBXProject "IQC Importer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DE70C23C17441B6A0010CEFF;
+			productRefGroup = DE70C24617441B6A0010CEFF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE70C24417441B6A0010CEFF /* IQC Importer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE70C24317441B6A0010CEFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE70C25317441B6A0010CEFF /* InfoPlist.strings in Resources */,
+				DE70C25917441B6A0010CEFF /* Credits.rtf in Resources */,
+				DE70C28917441BEA0010CEFF /* HEFT_MySQLPreferencesController.xib in Resources */,
+				DE70C28E17441BF30010CEFF /* RHAboutViewController.xib in Resources */,
+				DE70C28F17441BF30010CEFF /* RHPreferencesWindow.xib in Resources */,
+				DE70C2A317441C240010CEFF /* Timetable.icns in Resources */,
+				DE70C31E17441C7F0010CEFF /* notes.txt in Resources */,
+				DEE2CA9E1746B81900967084 /* Alert.png in Resources */,
+				DEE2CA9F1746B81900967084 /* Apply.png in Resources */,
+				DEE2CAA01746B81900967084 /* Danger.png in Resources */,
+				DEE2CAA11746B81900967084 /* Database.png in Resources */,
+				DEE2CAA21746B81900967084 /* Error.png in Resources */,
+				DEE2CAA31746B81900967084 /* No.png in Resources */,
+				DEE2CAA41746B81900967084 /* OK.png in Resources */,
+				DEE2CAA51746B81900967084 /* Play.png in Resources */,
+				DEE2CAA61746B81900967084 /* Problem.png in Resources */,
+				DEE2CAA71746B81900967084 /* Question.png in Resources */,
+				DEE2CAA81746B81900967084 /* Warning.png in Resources */,
+				DEE2CAA91746B81900967084 /* Yes.png in Resources */,
+				DEE2CAB01746C18E00967084 /* HEFTAMSServerPreferencesView.xib in Resources */,
+				DEE2CABD174A68BB00967084 /* HEFTIQCMainWIndow.xib in Resources */,
+				DEE2CABF174A6D8200967084 /* Application.png in Resources */,
+				DE143121174C0BF300DC11F2 /* HEFTImportWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE70C24117441B6A0010CEFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE70C25517441B6A0010CEFF /* main.m in Sources */,
+				DE70C25C17441B6A0010CEFF /* HEFTAppDelegate.m in Sources */,
+				DE70C27417441BB60010CEFF /* HEFT_MySQLPreferencesController.m in Sources */,
+				DE70C27517441BB60010CEFF /* HEFT_fileutils.m in Sources */,
+				DE70C27617441BB60010CEFF /* ConnectionController.m in Sources */,
+				DE70C27717441BB60010CEFF /* RHPreferencesWindowController.m in Sources */,
+				DE70C27A17441BB60010CEFF /* HEFTImport_Controller.m in Sources */,
+				DE70C27D17441BC30010CEFF /* NSString+CSVUtils.m in Sources */,
+				DE70C28217441BD80010CEFF /* HEFT_DatabaseFunctions.m in Sources */,
+				DE70C28317441BD80010CEFF /* HEFT_MetricsFunctions.m in Sources */,
+				DE70C29417441C000010CEFF /* HEFTConstants.m in Sources */,
+				DE70C29717441C0D0010CEFF /* NSDate+NSDateCategory.m in Sources */,
+				DE70C31317441C7F0010CEFF /* MysqlCommitException.m in Sources */,
+				DE70C31417441C7F0010CEFF /* MysqlException.m in Sources */,
+				DE70C31517441C7F0010CEFF /* MysqlRollbackException.m in Sources */,
+				DE70C31717441C7F0010CEFF /* MysqlConnection.m in Sources */,
+				DE70C31817441C7F0010CEFF /* MysqlDelete.m in Sources */,
+				DE70C31917441C7F0010CEFF /* MysqlFetch.m in Sources */,
+				DE70C31A17441C7F0010CEFF /* MysqlFetchField.m in Sources */,
+				DE70C31B17441C7F0010CEFF /* MysqlInsert.m in Sources */,
+				DE70C31C17441C7F0010CEFF /* MysqlLiteral.m in Sources */,
+				DE70C31D17441C7F0010CEFF /* MysqlUpdate.m in Sources */,
+				DE70C31F17441C7F0010CEFF /* NSString_MysqlEscape.m in Sources */,
+				DEE2CAAC1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m in Sources */,
+				DEE2CAB31746C51F00967084 /* HEFTAboutViewController.m in Sources */,
+				DEE2CABB174A64F800967084 /* HEFTMainWindowController.m in Sources */,
+				DE14311F174BC92100DC11F2 /* HEFTImporterFunctions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE70C25117441B6A0010CEFF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE70C25217441B6A0010CEFF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE70C25717441B6A0010CEFF /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE70C25817441B6A0010CEFF /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE70C26017441B6A0010CEFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DE70C26117441B6A0010CEFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DE70C26317441B6A0010CEFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IQC Importer/IQC Importer-Prefix.pch";
+				INFOPLIST_FILE = "IQC Importer/IQC Importer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/IQC Importer/Objc_Mysql_iPhone_OSX/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DE70C26417441B6A0010CEFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IQC Importer/IQC Importer-Prefix.pch";
+				INFOPLIST_FILE = "IQC Importer/IQC Importer-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/IQC Importer/Objc_Mysql_iPhone_OSX/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE70C24017441B6A0010CEFF /* Build configuration list for PBXProject "IQC Importer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE70C26017441B6A0010CEFF /* Debug */,
+				DE70C26117441B6A0010CEFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE70C26217441B6A0010CEFF /* Build configuration list for PBXNativeTarget "IQC Importer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE70C26317441B6A0010CEFF /* Debug */,
+				DE70C26417441B6A0010CEFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DE70C23D17441B6A0010CEFF /* Project object */;
+}
