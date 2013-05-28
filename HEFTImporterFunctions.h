@@ -21,6 +21,7 @@
 @property IBOutlet NSTextField *importStatus;
 
 
--(void)importQCdata:(NSArray *)selectedFiles;
+-(BOOL)importCSVFile:(NSURL *)fileURL mySQLConnection:(MysqlConnection *)connection;
+
 
 @end

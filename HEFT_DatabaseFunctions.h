@@ -22,10 +22,10 @@
 -(id)init;
 
 //methods
--(BOOL)connectMySQL;
--(NSArray *) runMySQLSelectQuery:(NSString *)sqlQuery;
--(BOOL)runMySQLInsertQueries:(NSDictionary*)query tableName:(NSString *)tableName;
--(NSDictionary *)logAction:(NSString *)logAction logDate:(NSString *)logDateStr;
+-(MysqlConnection *)connectMySQL;
+-(NSArray *) runMySQLSelectQuery:(NSString *)sqlQuery mysqlConnection:(MysqlConnection *)connection;
+-(BOOL)runMySQLInsertQueries:(NSDictionary*)query tableName:(NSString *)tableName mysqlConnection:(MysqlConnection *)connection;
+-(BOOL)logImportedFiles:(NSString *)filename mysqlConnection:(MysqlConnection *)connection;
 
 
 @end

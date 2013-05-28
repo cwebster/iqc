@@ -43,14 +43,13 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{17, 48}, {481, 133}}</string>
 						<reference key="NSSuperview" ref="1005"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSAntiCompressionPriority">{250, 750}</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="170236926">
 							<int key="NSCellFlags">67108864</int>
 							<int key="NSCellFlags2">138412032</int>
-							<string key="NSContents">Imports AMS IQC Files into MySQL Databased</string>
+							<string key="NSContents">Imports AMS IQC Files into MySQL Databases</string>
 							<object class="NSFont" key="NSSupport">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">15</double>

@@ -39,7 +39,7 @@
     return NSStringFromClass(self.class);
 }
 -(NSImage*)toolbarItemImage{
-    return [NSImage imageNamed:@"Database"];
+    return [NSImage imageNamed:@"Storage-UI"];
 }
 -(NSString*)toolbarItemLabel{
     return NSLocalizedString(@"AMS Server Preferences", @"AMSoolbarItemLabel");
@@ -61,7 +61,8 @@
 
 
 -(IBAction)testAMSServerConnection:(id)sender{
-    NSImage *checkingImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OK" ofType:@"png"]];
+    NSImage *checkingImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
+    
 
     [amsServerStatus setHidden:YES];
     [amsServerStatus setImage:checkingImage];
@@ -75,13 +76,13 @@
     HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
     
     if (appDelegate.mountPointofAMSServer !=NULL) {
-        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OK" ofType:@"png"]];
+        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Checkmark-UI" ofType:@"PNG"]];
         [amsServerStatus setImage:successImage];
         
         NSLog(@"AMS Server Mounted");
     }else{
         
-        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"No" ofType:@"png"]];
+        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
         [amsServerStatus setImage:failImage];
     }
     [amsServerStatus setHidden:NO];

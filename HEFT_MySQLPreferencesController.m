@@ -43,7 +43,7 @@
     return NSStringFromClass(self.class);
 }
 -(NSImage*)toolbarItemImage{
-    return [NSImage imageNamed:@"Database"];
+    return [NSImage imageNamed:@"Storage-UI"];
 }
 -(NSString*)toolbarItemLabel{
     return NSLocalizedString(@"My SQL Preferences", @"MySQLToolbarItemLabel");
@@ -124,11 +124,13 @@
     
     HEFT_DatabaseFunctions *dbTest = [[HEFT_DatabaseFunctions alloc]init];
     
-    if ( [dbTest connectMySQL]== YES) {
-        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OK" ofType:@"png"]];
+    MysqlConnection *connection = [dbTest connectMySQL];
+    
+    if ( connection != Nil) {
+        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Checkmark-UI" ofType:@"PNG"]];
         [mySQLConnectionStatus setImage:successImage];
     } else{
-        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"No" ofType:@"png"]];
+        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
         [mySQLConnectionStatus setImage:failImage];
     }
 

@@ -7,24 +7,38 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <RHPreferences/RHPreferences.h>
 
-@class HEFTImport_Controller;
+@class HEFTImporterProgressViewController;
 
 @interface HEFTMainWindowController : NSWindowController {
-    HEFTImport_Controller *importController;
+    RHPreferencesWindowController *_preferencesWindowController;
+   
 }
 
-@property IBOutlet NSToolbar *toolbarOutlet;
-@property IBOutlet NSToolbarItem *preferencesToolBarItem;
-@property IBOutlet NSTextField *amsServerUrlLabel;
-@property IBOutlet NSImageView *amsServerStausImage;
-@property IBOutlet NSImageView *sqlServerStatusImage;
+@property (assign) IBOutlet NSToolbar *toolbarOutlet;
+@property (assign) IBOutlet NSToolbarItem *preferencesToolBarItem;
+@property (assign) IBOutlet NSTextField *amsServerUrlLabel;
+@property (assign) IBOutlet NSImageView *amsServerStausImage;
+@property (assign) IBOutlet NSImageView *sqlServerStatusImage;
 
+@property (weak) IBOutlet NSView *statusView;
+@property (strong) NSViewController * statusViewController;
+@property (retain) RHPreferencesWindowController *preferencesWindowController;
+
+@property (strong) NSTimer *pollingTimer;
+@property (assign) int fireCount;
 
 -(void)testMySQLConnection;
 -(BOOL)mountAMSServer;
 -(IBAction)importQCbyDirectory:(id)sender;
 -(IBAction)importQCbySelectingFiles:(id)sender;
+-(IBAction)showPreferencePanel:(id)sender;
+-(IBAction)timedImport:(id)sender;
+-(IBAction)stopTimedImport:(id)sender;
+
+-(void)importFiles:(NSArray *)selectedFiles;
+-(NSDictionary *)getImportedFileNames;
 
 
 @end

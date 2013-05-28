@@ -16,14 +16,17 @@
 
 + (void)initialize
 {
+    
+    //set up user defaults
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     [defaultValues setObject:[NSString stringWithFormat:@"localhost"] forKey:HEFTMySQLServer];
     [defaultValues setObject:[NSString stringWithFormat:@"root"] forKey:HEFTMySQLUsername];
     [defaultValues setObject:[NSString stringWithFormat:@"de117gx"] forKey:HEFTMySQLPassword];
     [defaultValues setObject:[NSString stringWithFormat:@"qc"] forKey:HEFTMySQLSchema];
     [defaultValues setObject:[NSString stringWithFormat:@"smb://ams-server/ams/qc"] forKey:AMSServerUrl];
+    [defaultValues setObject:[NSString stringWithFormat:@"5"] forKey:importTimeInterval];
     
-    NSUserDefaults * prefs = [NSUserDefaults standardUserDefaults];                  // c
+    NSUserDefaults * prefs = [NSUserDefaults standardUserDefaults];                 
     [prefs registerDefaults:defaultValues];
     
     NSLog(@"Registered User defaults: %@", defaultValues);

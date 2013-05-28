@@ -17,13 +17,13 @@
 {
     if (self = [super init])
     {
-        [self connectMySQL];
+        /// init functions
     }
     return self;
 }
 
 
--(BOOL)connectMySQL{
+-(MysqlConnection *)connectMySQL{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *mySQLServer = [defaults objectForKey:HEFTMySQLServer];
@@ -32,31 +32,25 @@
     NSString *mySQLSchema = [defaults objectForKey:HEFTMySQLSchema];
     
     @try {
-        NSLog(@"Connecting MYSQL.....");
-        self.mySQLConnection = [MysqlConnection connectToHost:mySQLServer user:mySQLUser password:mySQLPass schema:mySQLSchema flags:MYSQL_DEFAULT_CONNECTION_FLAGS];
+        NSLog(@"Connected MySQL");
+        MysqlConnection *connection = [MysqlConnection connectToHost:mySQLServer user:mySQLUser password:mySQLPass schema:mySQLSchema flags:MYSQL_DEFAULT_CONNECTION_FLAGS];
         
-        MysqlFetch *userFetch = [MysqlFetch fetchWithCommand:@"SELECT VARIABLE_NAME, VARIABLE_VALUE FROM INFORMATION_SCHEMA.GLOBAL_VARIABLES WHERE VARIABLE_NAME = 'VERSION'"
-                                                onConnection:self.mySQLConnection];
-        
-        for (NSDictionary *userRow in userFetch.results) {
-            NSString *userNumber = [userRow objectForKey:@"VARIABLE_VALUE"];
-            NSLog(@"%@",userNumber);
-                                                          }
-        return YES;
+        return connection;
         
     }
     @catch (NSException *exception) {
         NSString* reason = [exception reason];
         NSLog(@"Got NSException ***: %s", [reason UTF8String]);
         NSLog(@"---");
-        return NO;
+        return Nil;
     }
 }
 
 
--(NSArray *)runMySQLSelectQuery:(NSString *)sqlQuery{
+-(NSArray *)runMySQLSelectQuery:(NSString *)sqlQuery mysqlConnection:(MysqlConnection *)connection{
+    
     MysqlFetch *userFetch = [MysqlFetch fetchWithCommand:sqlQuery
-                                            onConnection:self.mySQLConnection];
+                                            onConnection:connection];
     
     NSLog(@"There are %ld members",[userFetch.results count]);
 
@@ -64,44 +58,68 @@
 }
 
 
--(BOOL)runMySQLInsertQueries:(NSDictionary*)query tableName:(NSString *)tableName{
+-(BOOL)runMySQLInsertQueries:(NSDictionary*)query tableName:(NSString *)tableName  mysqlConnection:(MysqlConnection *)connection{
     
- //  HEFT_DatabaseFunctions *db = [[HEFT_DatabaseFunctions alloc]init];
     
-    @try {
-        NSLog(@"running queries: %@", query);
+    if (connection ==nil) {
         
-        if (self.mySQLConnection ==nil) {
-            [self connectMySQL];
-            NSLog(@"Connecting");
+        NSLog(@"No Connection");
+        return NO;
+        
+    } else{
+        @try {
+            NSLog(@"running queries: %@", query);
+            
+            
+            MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:connection];
+            
+            insertCommand.table =tableName;
+            insertCommand.rowData=query;
+            [insertCommand execute];
+            return YES;
+            
+        }
+        @catch (NSException *exception) {
+            NSString* reason = [exception reason];
+            NSLog(@"Got NSException:in insert: %s", [reason UTF8String]);
+            NSLog(@"---");
+            return NO;
         }
         
-        MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:self.mySQLConnection];
         
-        insertCommand.table =tableName;
-        insertCommand.rowData=query;
-        [insertCommand execute];
-        return YES;
-        
-    }
-    @catch (NSException *exception) {
-        NSString* reason = [exception reason];
-        NSLog(@"Got NSException:in insert: %s", [reason UTF8String]);
-        NSLog(@"---");
-        return NO;
     }
     
 }
 
--(NSDictionary *)logAction:(NSString *)logAction logDate:(NSString *)logDateStr{
+-(BOOL)logImportedFiles:(NSString *)filename mysqlConnection:(MysqlConnection *)connection{
     
-    NSMutableDictionary *insertsDictionary = [[NSMutableDictionary alloc]init];
-    NSDictionary *insertQuery = [NSDictionary dictionaryWithObjectsAndKeys:logAction, @"Action",logDateStr,@"Date", nil];
-    [insertsDictionary setValue:insertQuery forKey:logDateStr];
+    if (connection ==nil) {
+        
+        NSLog(@"No Connection");
+        return NO;
+        
+    } else{
+        @try {
+            NSLog(@"Logging file as imported: %@", filename);
+            
+            MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:connection];
+            insertCommand.table =@"imported_files";
+            
+            insertCommand.rowData=[NSDictionary dictionaryWithObjectsAndKeys:filename,@"filename",nil];
+            [insertCommand execute];
+           
+            return YES;
+            
+        }
+        @catch (NSException *exception) {
+            NSString* reason = [exception reason];
+            NSLog(@"Got NSException:in insert: %s", [reason UTF8String]);
+            NSLog(@"---");
+            return NO;
+        }
     
-    NSDictionary *returnDictionary = [NSDictionary dictionaryWithDictionary:insertsDictionary];
+    }
     
-    return returnDictionary;
 }
 
 

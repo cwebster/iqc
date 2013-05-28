@@ -15,5 +15,6 @@ NSString * const HEFTMySQLUsername = @"HEFTMySQLUsername";
 NSString * const HEFTMySQLPassword = @"HEFTMySQLPassword";
 NSString * const HEFTMySQLSchema = @"HEFTMySQLSchema";
 NSString * const AMSServerUrl = @"AMSServerUrl";
+NSString * const importTimeInterval = @"importTimeInterval";
 
 @end

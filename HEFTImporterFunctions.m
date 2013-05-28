@@ -11,32 +11,21 @@
 @implementation HEFTImporterFunctions
 @synthesize importStatus;
 
--(void)importQCdata:(NSArray *)selectedFiles{
+-(BOOL)importCSVFile:(NSURL *)fileURL mySQLConnection:(MysqlConnection *)connection{
     
-    //variables
-	NSArray* csvData;
-	NSError* error;
-    int i;
-	NSInteger count;
-    double maxVal;
     
-    count = [selectedFiles count];
-    maxVal = count;
+//    HEFT_DatabaseFunctions *dbTest = [[HEFT_DatabaseFunctions alloc]init];
+
     
-    NSLog(@"count: %ld:", (long)count);
-    
-    MysqlConnection *mySQLConnection = [self connectMySQL];
-    
-    NSEnumerator *e = [selectedFiles objectEnumerator];
-    id object;
-    
-    // [importController.importStatus setStringValue:statusText];
-    
-    while (object = [e nextObject]) {
-        // do something with object
+    if ( connection != Nil) {
+        
+        NSArray* csvData;
+        NSError* error;
+        int i;
+        NSInteger count;
         
         // open CSV file into csvString
-        NSString *csvString = [NSString stringWithContentsOfURL:object encoding:NSUTF8StringEncoding error:&error];
+        NSString *csvString = [NSString stringWithContentsOfURL:fileURL encoding:NSUTF8StringEncoding error:&error];
         
         
         // parse CSV data into csvData array
@@ -57,11 +46,15 @@
             
             @try {
                 
-                MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:mySQLConnection];
+                MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:connection];
                 
                 insertCommand.table =@"qc";
                 insertCommand.rowData=insertData;
                 [insertCommand execute];
+                
+                NSLog(@"Imported file: %@", fileURL);
+                
+                return YES;
                 
                 
             }
@@ -69,46 +62,28 @@
                 NSString* reason = [exception reason];
                 NSLog(@"Got NSException:in insert: %s", [reason UTF8String]);
                 NSLog(@"---");
+                NSLog(@"File not imported: %@", fileURL);
                 
+                return NO;
             }
             
+            
+            
         }
+
         
         
+        
+        
+    } else{
+        NSLog(@"Connection is nil apparently");
+        return NO;
     }
     
-    NSLog(@"Import Complete");
 }
 
--(MysqlConnection *)connectMySQL{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *mySQLServer = [defaults objectForKey:HEFTMySQLServer];
-    NSString *mySQLUser = [defaults objectForKey:HEFTMySQLUsername];
-    NSString *mySQLPass = [defaults objectForKey:HEFTMySQLPassword];
-    NSString *mySQLSchema = [defaults objectForKey:HEFTMySQLSchema];
-    
-    @try {
-        NSLog(@"Connecting MYSQL.....");
-        MysqlConnection *mySQLConnection = [MysqlConnection connectToHost:mySQLServer user:mySQLUser password:mySQLPass schema:mySQLSchema flags:MYSQL_DEFAULT_CONNECTION_FLAGS];
-        
-        MysqlFetch *userFetch = [MysqlFetch fetchWithCommand:@"SELECT VARIABLE_NAME, VARIABLE_VALUE FROM INFORMATION_SCHEMA.GLOBAL_VARIABLES WHERE VARIABLE_NAME = 'VERSION'"
-                                                onConnection:mySQLConnection];
-        
-        for (NSDictionary *userRow in userFetch.results) {
-            NSString *userNumber = [userRow objectForKey:@"VARIABLE_VALUE"];
-            NSLog(@"%@",userNumber);
-        }
-        return mySQLConnection;
-        
-    }
-    @catch (NSException *exception) {
-        NSString* reason = [exception reason];
-        NSLog(@"Got NSException ***: %s", [reason UTF8String]);
-        NSLog(@"---");
-        return Nil;
-    }
-}
+
+
 
 
 
