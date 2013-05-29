@@ -15,7 +15,7 @@
 @end
 
 @implementation HEFT_MySQLPreferencesController
-@synthesize mySQLPasswordField,mySQLServerField,mySQLUsernameField, mySQLSchemaField;
+@synthesize mySQLPasswordField,mySQLServerField,mySQLUsernameField, mySQLSchemaField, mySQLImportTableNameField;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:@"HEFT_MySQLPreferencesController" bundle:nibBundleOrNil];
@@ -25,6 +25,7 @@
         [mySQLUsernameField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLUsername]];
         [mySQLPasswordField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLPassword]];
         [mySQLSchemaField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLSchema]];
+        [mySQLImportTableNameField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLImportTableName]];
         
     }
     return self;
@@ -35,6 +36,7 @@
     [mySQLUsernameField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLUsername]];
     [mySQLPasswordField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLPassword]];
     [mySQLSchemaField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLSchema]];
+    [mySQLImportTableNameField setStringValue:[HEFT_MySQLPreferencesController preferenceHEFTMySQLImportTableName]];
 }
 
 #pragma mark - RHPreferencesViewControllerProtocol
@@ -55,6 +57,7 @@
     return self.mySQLServerField;
     return self.mySQLPasswordField;
     return self.mySQLSchemaField;
+    return self.mySQLImportTableNameField;
 }
 
 +(NSString *)preferenceHEFTMySQLServer{
@@ -85,6 +88,13 @@
     
 }
 
++(NSString *)preferenceHEFTMySQLImportTableName{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *mySQLImportTabName = [defaults objectForKey:HEFTMySQLImportTableName];
+    return mySQLImportTabName;
+    
+}
+
 +(void) setPreferenceHEFTMySQLServer:(NSString *)mySQLServer{
     [[NSUserDefaults standardUserDefaults] setObject:mySQLServer forKey:HEFTMySQLServer];
 }
@@ -103,6 +113,11 @@
     
 }
 
++(void) setPreferenceHEFTMySQLImportTableName:(NSString *)mySQLImportTableName;{
+    [[NSUserDefaults standardUserDefaults] setObject:mySQLImportTableName forKey:HEFTMySQLImportTableName];
+    
+}
+
 
 #pragma mark -
 #pragma mark - ==== Button Click Actions ===
@@ -113,11 +128,13 @@
     NSString *username = [mySQLUsernameField stringValue];
     NSString *password = [mySQLPasswordField stringValue];
     NSString *schema = [mySQLSchemaField stringValue];
+    NSString *tableName = [mySQLImportTableNameField stringValue];
     
     [HEFT_MySQLPreferencesController setPreferenceHEFTMySQLServer:sqlServer];
     [HEFT_MySQLPreferencesController setPreferenceHEFTMySQLUsername:username];
     [HEFT_MySQLPreferencesController setPreferenceHEFTMySQLPassword:password];
     [HEFT_MySQLPreferencesController setPreferenceHEFTMySQLSchema:schema];
+    [HEFT_MySQLPreferencesController setPreferenceHEFTMySQLImportTableName:tableName];
 }
 
 -(IBAction)testMySQLConnection:(id)sender{

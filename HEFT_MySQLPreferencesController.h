@@ -15,6 +15,7 @@
     NSTextField *mySQLUsernameField;
     NSTextField *mySQLServerField;
     NSTextField *mySQLSchemaField;
+    NSTextField *mySQLImportTableNameField;
     
     IBOutlet NSImageView* mySQLConnectionStatus;
 
@@ -25,6 +26,7 @@
 @property IBOutlet NSTextField *mySQLServerField;
 @property IBOutlet NSSecureTextField *mySQLPasswordField;
 @property IBOutlet NSTextField *mySQLSchemaField;
+@property IBOutlet NSTextField *mySQLImportTableNameField;
 
 //Actions
 -(IBAction)setMySQLDefaults:(id)sender;
@@ -35,10 +37,12 @@
 +(NSString *)preferenceHEFTMySQLUsername;
 +(NSString *)preferenceHEFTMySQLPassword;
 +(NSString *)preferenceHEFTMySQLSchema;
++(NSString *)preferenceHEFTMySQLImportTableName;
 
 +(void) setPreferenceHEFTMySQLServer:(NSString *)mySQLServer;
 +(void) setPreferenceHEFTMySQLUsername:(NSString *)mySQLServerUserName;
 +(void) setPreferenceHEFTMySQLPassword:(NSString *)mySQLServerPassword;
 +(void) setPreferenceHEFTMySQLSchema:(NSString *)mySQLServerSchema;
++(void) setPreferenceHEFTMySQLImportTableName:(NSString *)mySQLImportTableName;
 
 @end

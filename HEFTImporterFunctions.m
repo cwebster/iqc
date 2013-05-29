@@ -12,11 +12,7 @@
 @synthesize importStatus;
 
 -(BOOL)importCSVFile:(NSURL *)fileURL mySQLConnection:(MysqlConnection *)connection{
-    
-    
-//    HEFT_DatabaseFunctions *dbTest = [[HEFT_DatabaseFunctions alloc]init];
-
-    
+   
     if ( connection != Nil) {
         
         NSArray* csvData;
@@ -48,7 +44,7 @@
                 
                 MysqlInsert *insertCommand = [MysqlInsert insertWithConnection:connection];
                 
-                insertCommand.table =@"qc";
+                insertCommand.table =@"imported_qcs";
                 insertCommand.rowData=insertData;
                 [insertCommand execute];
                 

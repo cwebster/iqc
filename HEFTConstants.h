@@ -17,6 +17,7 @@ extern NSString * const HEFTMySQLPassword;
 extern NSString * const HEFTMySQLSchema;
 extern NSString * const AMSServerUrl;
 extern NSString * const importTimeInterval;
+extern NSString * const HEFTMySQLImportTableName;
 
 
 @end

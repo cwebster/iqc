@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE14311F174BC92100DC11F2 /* HEFTImporterFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */; };
-		DE161E981754C92500928FCC /* Calendar-UI.png in Resources */ = {isa = PBXBuildFile; fileRef = DE161E971754C92500928FCC /* Calendar-UI.png */; };
+		DE160FC21755510100468553 /* StatHat.m in Sources */ = {isa = PBXBuildFile; fileRef = DE160FC11755510100468553 /* StatHat.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE70C24917441B6A0010CEFF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24817441B6A0010CEFF /* Cocoa.framework */; };
 		DE70C25317441B6A0010CEFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE70C25117441B6A0010CEFF /* InfoPlist.strings */; };
 		DE70C25517441B6A0010CEFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C25417441B6A0010CEFF /* main.m */; };
@@ -219,7 +219,8 @@
 /* Begin PBXFileReference section */
 		DE14311D174BC92100DC11F2 /* HEFTImporterFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTImporterFunctions.h; sourceTree = "<group>"; };
 		DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTImporterFunctions.m; sourceTree = "<group>"; };
-		DE161E971754C92500928FCC /* Calendar-UI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-UI.png"; sourceTree = "<group>"; };
+		DE160FC01755510100468553 /* StatHat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatHat.h; sourceTree = "<group>"; };
+		DE160FC11755510100468553 /* StatHat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatHat.m; sourceTree = "<group>"; };
 		DE70C24517441B6A0010CEFF /* IQC Importer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IQC Importer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE70C24817441B6A0010CEFF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DE70C24B17441B6A0010CEFF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -532,7 +533,6 @@
 		DE70C23C17441B6A0010CEFF = {
 			isa = PBXGroup;
 			children = (
-				DE161E971754C92500928FCC /* Calendar-UI.png */,
 				DEAE7850174D693A0005D937 /* PNG */,
 				DE70C24F17441B6A0010CEFF /* Supporting Files */,
 				DE70C324174426080010CEFF /* Models */,
@@ -585,6 +585,8 @@
 		DE70C24F17441B6A0010CEFF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE160FC01755510100468553 /* StatHat.h */,
+				DE160FC11755510100468553 /* StatHat.m */,
 				DE70C29517441C0D0010CEFF /* NSDate+NSDateCategory.h */,
 				DE70C29617441C0D0010CEFF /* NSDate+NSDateCategory.m */,
 				DE70C29217441C000010CEFF /* HEFTConstants.h */,
@@ -1030,7 +1032,6 @@
 				DEE2CAB01746C18E00967084 /* HEFTAMSServerPreferencesView.xib in Resources */,
 				DEE2CABD174A68BB00967084 /* HEFTIQCMainWIndow.xib in Resources */,
 				DEAE76CF174D0A4C0005D937 /* HEFTImporterProgressViewController.xib in Resources */,
-				DEAE78E4174D693A0005D937 /* Alarm-Check-UI.png in Resources */,
 				DEAE78E5174D693A0005D937 /* Alarm-Off-UI.png in Resources */,
 				DEAE78E6174D693A0005D937 /* Alarm-On-UI.png in Resources */,
 				DEAE78E7174D693A0005D937 /* Alarm-UI.png in Resources */,
@@ -1160,6 +1161,7 @@
 				DEAE7963174D693A0005D937 /* Tray-Mail-UI.png in Resources */,
 				DEAE7964174D693A0005D937 /* Tray-UI.png in Resources */,
 				DEAE7965174D693A0005D937 /* Twg-Logo-UI.png in Resources */,
+				DEAE78E4174D693A0005D937 /* Alarm-Check-UI.png in Resources */,
 				DEAE7966174D693A0005D937 /* Video-Forward-UI.png in Resources */,
 				DEAE7967174D693A0005D937 /* Video-Next-UI.png in Resources */,
 				DEAE7968174D693A0005D937 /* Video-Pause-UI.png in Resources */,
@@ -1179,7 +1181,6 @@
 				DEAE7976174D693A0005D937 /* Zoom-Out-UI.png in Resources */,
 				DEAE797B174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.xib in Resources */,
 				DEAE7982174E6F850005D937 /* HEFTTimedProgressViewController.xib in Resources */,
-				DE161E981754C92500928FCC /* Calendar-UI.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,6 +1219,7 @@
 				DEAE797A174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.m in Sources */,
 				DEAE7981174E6F850005D937 /* HEFTTimedProgressViewController.m in Sources */,
 				DEAE7985174E73F30005D937 /* HEFTTimerFunctions.m in Sources */,
+				DE160FC21755510100468553 /* StatHat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

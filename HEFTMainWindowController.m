@@ -17,6 +17,7 @@
 #import "HEFTAboutViewController.h"
 #import "HEFTAMSTimeImportPreferencesViewController.h"
 #import "HEFTTimedProgressViewController.h"
+#import "StatHat.h"
 
 
 @interface HEFTMainWindowController ()
@@ -266,8 +267,15 @@
 - (void)timerTicked:(NSTimer*)timer {
     _fireCount++;
     NSLog(@"fire count: %d", _fireCount);
+    
+    //update stats on stathat
+    [StatHat postEZStat:@"fire-count" withCount: 1.0
+                forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
+    
     [self timeImportLogUpdate];
     [self importQCbyDirectory:self];
+    
+ 
 
 }
 
@@ -318,6 +326,8 @@
         
         double count = 0;
         
+        int file_import_count =0;
+        
         [[vc progressIndicator] setHidden:NO];
         
         [[vc progressIndicator]setDoubleValue:count];
@@ -330,13 +340,15 @@
             // do something with object
             //have we imported file before?
             
-            if ([alreadyImportedFile objectForKey:[object absoluteString]]) {
+            NSString *filename = [object lastPathComponent];
+    
+            
+            if ([alreadyImportedFile objectForKey:filename]) {
                 // dont import file, its already been done
                 
             } else{
                 
                 // go ahead and import the filw
-                NSLog(@"Import File");
                 NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
                 NSLog(@"Import File: %@", statText);
                 [vc updateStatusField:statText];
@@ -344,9 +356,11 @@
                 
                 if ([importer importCSVFile:object mySQLConnection:connection] == YES) {
                     NSLog(@"Successful Import");
+                    file_import_count ++;
+                    NSLog(@"file import count: %d", file_import_count);
                     
                     //log successful import
-                    [dbFunctions logImportedFiles:[object absoluteString] mysqlConnection:connection];
+                    [dbFunctions logImportedFiles:[object lastPathComponent] mysqlConnection:connection];
                     
                 } else {
                     // There's been an import problem
@@ -362,13 +376,18 @@
                 NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
                 [vc updateStatusField:statText];
             });
-            
+            //update stats on stathat
+            NSLog(@"file import count: %d", file_import_count);
+            [StatHat postEZStat:@"qc-import-files" withValue:file_import_count
+                        forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
             importer = nil;
         }
     });
     
     [[vc progressIndicator] setHidden:YES];
     [vc updateStatusField:@"Import Done"];
+    
+    
 }
 
 -(NSDictionary *)getImportedFileNames{

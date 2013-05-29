@@ -25,6 +25,7 @@
     [defaultValues setObject:[NSString stringWithFormat:@"qc"] forKey:HEFTMySQLSchema];
     [defaultValues setObject:[NSString stringWithFormat:@"smb://ams-server/ams/qc"] forKey:AMSServerUrl];
     [defaultValues setObject:[NSString stringWithFormat:@"5"] forKey:importTimeInterval];
+    [defaultValues setObject:[NSString stringWithFormat:@"imported_files"] forKey:HEFTMySQLImportTableName];
     
     NSUserDefaults * prefs = [NSUserDefaults standardUserDefaults];                 
     [prefs registerDefaults:defaultValues];
