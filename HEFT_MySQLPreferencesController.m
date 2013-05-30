@@ -45,7 +45,7 @@
     return NSStringFromClass(self.class);
 }
 -(NSImage*)toolbarItemImage{
-    return [NSImage imageNamed:@"Storage-UI"];
+    return [NSImage imageNamed:@"database"];
 }
 -(NSString*)toolbarItemLabel{
     return NSLocalizedString(@"My SQL Preferences", @"MySQLToolbarItemLabel");
@@ -144,10 +144,10 @@
     MysqlConnection *connection = [dbTest connectMySQL];
     
     if ( connection != Nil) {
-        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Checkmark-UI" ofType:@"PNG"]];
+        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"box-check" ofType:@"png"]];
         [mySQLConnectionStatus setImage:successImage];
     } else{
-        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
+        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"no-entry" ofType:@"png"]];
         [mySQLConnectionStatus setImage:failImage];
     }
 

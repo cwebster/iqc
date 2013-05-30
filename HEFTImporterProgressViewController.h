@@ -11,7 +11,7 @@
 @interface HEFTImporterProgressViewController : NSViewController
 
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
-@property (weak) IBOutlet NSTextField *statusText;
+@property (assign) IBOutlet NSTextView *statusText;
 
 
 -(void)updateStatusField:(NSString *)status;

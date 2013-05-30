@@ -18,6 +18,7 @@
 @property (retain) NSURL *mountPointofAMSServer;
 @property (retain) HEFTMainWindowController *myMainWindowController;
 @property (assign) IBOutlet NSTextField *amsServerUrlLabel;
+@property (retain) NSURL *applicationSupportDirectory;
 
 - (NSURL*)applicationDirectory;
 

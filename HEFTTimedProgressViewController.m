@@ -7,6 +7,7 @@
 //
 
 #import "HEFTTimedProgressViewController.h"
+#import "HEFTAppDelegate.h"
 
 @interface HEFTTimedProgressViewController ()
 
@@ -29,6 +30,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        
+        //Get Application support directory for writing log file to
+        HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+        
+        NSURL *appsup = [appDelegate applicationDirectory];
+        NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+        
+        NSString *file = [NSString stringWithContentsOfURL:bUrl encoding:NSUTF8StringEncoding error:nil];
+        
+        if(!file) {
+            
+        }
+        
+        [_logTextView setString:file];
     }
     
     return self;

@@ -40,7 +40,7 @@
     return NSStringFromClass(self.class);
 }
 -(NSImage*)toolbarItemImage{
-    return [NSImage imageNamed:@"Alarm-UI"];
+    return [NSImage imageNamed:@"clock@2x"];
 }
 -(NSString*)toolbarItemLabel{
     return NSLocalizedString(@"AMS Timed Preferences", @"AMSTimedPreferences");

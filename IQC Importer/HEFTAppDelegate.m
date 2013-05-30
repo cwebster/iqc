@@ -13,6 +13,7 @@
 @implementation HEFTAppDelegate
 
 @synthesize mountPointofAMSServer, myMainWindowController;
+@synthesize applicationSupportDirectory = _applicationSupportDirectory;
 
 + (void)initialize
 {
@@ -32,6 +33,8 @@
     
     NSLog(@"Registered User defaults: %@", defaultValues);
     
+
+    
     
 }
 
@@ -42,6 +45,36 @@
     self.myMainWindowController = [[HEFTMainWindowController alloc]
                                 initWithWindowNibName:@"HEFTIQCMainWIndow"];
     [self.myMainWindowController showWindow:self];
+    
+    _applicationSupportDirectory = [self applicationDirectory];
+    
+    
+    NSDate *currentDate = [NSDate date];
+    
+    NSString *dateStr = [NSDateFormatter localizedStringFromDate:currentDate
+                                                               dateStyle:NSDateFormatterShortStyle
+                                                               timeStyle:NSDateFormatterFullStyle];
+    
+    
+    NSFileHandle *aFileHandle;
+    
+    NSURL *bUrl = [_applicationSupportDirectory URLByAppendingPathComponent:@"fileimportlog.txt"];
+    
+    NSError *error = nil;
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[bUrl path]])  //Optionally check if folder already hasn't existed.
+    {
+        [[NSFileManager defaultManager] createFileAtPath:[bUrl path] contents:nil attributes:nil];
+    }
+    
+    aFileHandle = [NSFileHandle fileHandleForWritingToURL:bUrl error:&error];
+    
+    [aFileHandle truncateFileAtOffset:[aFileHandle seekToEndOfFile]]; //setting aFileHandle to write at the end of the file
+    
+    NSString *s = [NSString stringWithFormat:@"\nApplication Launched: %@\n", dateStr];
+    
+    [aFileHandle writeData:[s dataUsingEncoding:NSUTF8StringEncoding]]; //actually write the data
+    
     
     
 }

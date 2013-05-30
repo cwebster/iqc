@@ -20,6 +20,11 @@
         int i;
         NSInteger count;
         
+        //Get Application support directory for writing log file to
+        HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+        
+        NSURL *appsup = [appDelegate applicationDirectory];
+        
         // open CSV file into csvString
         NSString *csvString = [NSString stringWithContentsOfURL:fileURL encoding:NSUTF8StringEncoding error:&error];
         
@@ -50,6 +55,18 @@
                 
                 NSLog(@"Imported file: %@", fileURL);
                 
+                
+                NSFileHandle *aFileHandle;
+                
+                NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+                
+                aFileHandle = [NSFileHandle fileHandleForWritingToURL:bUrl error:nil];
+
+                [aFileHandle truncateFileAtOffset:[aFileHandle seekToEndOfFile]]; //setting aFileHandle to write at the end of the file
+                
+                [aFileHandle writeData:[[fileURL absoluteString] dataUsingEncoding:NSUTF8StringEncoding]]; //actually write the data
+                [aFileHandle writeData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]]; //actually write the data
+                
                 return YES;
                 
                 
@@ -59,6 +76,19 @@
                 NSLog(@"Got NSException:in insert: %s", [reason UTF8String]);
                 NSLog(@"---");
                 NSLog(@"File not imported: %@", fileURL);
+                
+                NSFileHandle *aFileHandle;
+                
+                NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+                
+                aFileHandle = [NSFileHandle fileHandleForWritingToURL:bUrl error:nil];
+                
+                [aFileHandle truncateFileAtOffset:[aFileHandle seekToEndOfFile]]; //setting aFileHandle to write at the end of the file
+                
+                NSString *erromsg = @"\n File not imported: error : ";
+                NSString *fullError = [erromsg stringByAppendingString:[fileURL absoluteString]];
+                
+                [aFileHandle writeData:[fullError dataUsingEncoding:NSUTF8StringEncoding]]; //actually write the data
                 
                 return NO;
             }

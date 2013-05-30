@@ -31,7 +31,7 @@
     return NSStringFromClass(self.class);
 }
 -(NSImage*)toolbarItemImage{
-    return [NSImage imageNamed:@"Man-UI"];
+    return [NSImage imageNamed:@"person@2x.png"];
 }
 -(NSString*)toolbarItemLabel{
     return NSLocalizedString(@"About", @"AboutLabel");

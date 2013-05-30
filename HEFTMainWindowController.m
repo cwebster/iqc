@@ -18,6 +18,7 @@
 #import "HEFTAMSTimeImportPreferencesViewController.h"
 #import "HEFTTimedProgressViewController.h"
 #import "StatHat.h"
+#import "HEFTAboutWindowController.h"
 
 
 @interface HEFTMainWindowController ()
@@ -31,6 +32,7 @@
 @synthesize statusViewController = _statusViewController;
 @synthesize pollingTimer = _pollingTimer;
 @synthesize fireCount = _fireCount;
+@synthesize aboutWindowController = _aboutWindowController;
 
 
 - (id)initWithWindow:(NSWindow *)window
@@ -57,16 +59,31 @@
     
     //set the checking images for the SQL and AMS server check boxes
     
-    NSImage *checkingImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
+    NSImage *checkingImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"binoculars@2x" ofType:@"png"]];
     
     [amsServerStausImage setImage:checkingImage];
     [sqlServerStatusImage setImage:checkingImage];
     
     //try and connect to the SQL server
     [self testMySQLConnection];
+    
+    
+    //add a default view to status area
+    
+    [[_statusViewController view]removeFromSuperview];
+    
+    HEFTTimedProgressViewController *vc = [[HEFTTimedProgressViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
+    _statusViewController = vc;
+    
+    [_statusView addSubview:[vc view]];
+    [[vc view]setFrame:[_statusView bounds]];
+    [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
 
 }
 
+#pragma mark -
+#pragma mark - ==== IBActions ===
+#pragma mark -
 
 -(IBAction)showPreferencePanel:(id)sender{
     //if we have not created the window controller yet, create it now
@@ -86,6 +103,74 @@
     
 }
 
+-(IBAction)quit:(id)sender{
+    [[NSApplication sharedApplication] terminate:nil];
+    
+}
+
+-(IBAction)about:(id)sender{
+    
+    if (self.aboutWindowController==nil){
+        self.aboutWindowController= [[HEFTAboutWindowController alloc] initWithWindowNibName:@"HEFTAboutWindowController"];
+    }
+    
+    [self.aboutWindowController showWindow:nil];
+    
+}
+
+-(IBAction)importQCbyDirectory:(id)sender{
+    // this function imports all files found the AMS mount point directory
+    
+    // get the files in that directory
+    HEFT_fileutils *files = [[HEFT_fileutils alloc]init];
+    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+    NSArray *selectedFiles = [files getFilesInDirectory:appDelegate.mountPointofAMSServer];
+    
+    // import those files
+    [self importFiles:selectedFiles];
+    
+}
+
+-(IBAction)importQCbySelectingFiles:(id)sender{
+    
+    //Select CSV file from file system
+    
+	HEFT_fileutils *files = [[HEFT_fileutils alloc]init];
+    NSArray *selectedFiles = [files selectFiles];
+    
+    // import those files
+    [self importFiles:selectedFiles];
+    
+}
+
+
+-(IBAction)timedImport:(id)sender{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *timeInterval = [defaults objectForKey:importTimeInterval];
+    
+    _fireCount =0;
+    [self timeImportLogUpdate];
+    
+    double time = [timeInterval doubleValue]*60;
+    
+    NSLog(@"timer interval: %f", time);
+    
+    _pollingTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
+    
+    
+    
+}
+
+-(IBAction)stopTimedImport:(id)sender{
+    [_pollingTimer invalidate];
+    _pollingTimer = nil;
+    NSLog(@"Timer Stopped");
+}
+
+#pragma mark -
+#pragma mark - ==== AMS and MySQL Functions ===
+#pragma mark -
 
 -(BOOL)mountAMSServer{
     
@@ -136,12 +221,18 @@
                                          
                                          if (url != Nil) {
                                              [amsServerUrlLabel setStringValue:[url absoluteString]];
+                                             NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"box-check" ofType:@"png"]];
+                                             [amsServerStausImage setImage:successImage];
+                                             
+                                             NSLog(@"mounted url: %@", url);
+                                         } else{
+                                             NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"no-entry" ofType:@"png"]];
+                                             [amsServerStausImage setImage:failImage];
+                                             
+                                             NSLog(@"AMS Server Not Mounted");
                                          }
                                          
-                                         NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Checkmark-UI" ofType:@"PNG"]];
-                                         [amsServerStausImage setImage:successImage];
                                          
-                                         NSLog(@"mounted url: %@", url);
                                      });
     
     if(err != noErr){
@@ -164,58 +255,20 @@
     // Try and connect to mySQL server
     
     if ( [dbTest connectMySQL] != Nil) {
-        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Checkmark-UI" ofType:@"PNG"]];
+        NSImage *successImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"box-check" ofType:@"png"]];
         [sqlServerStatusImage setImage:successImage];
     } else{
-        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Warning-UI" ofType:@"PNG"]];
+        NSImage *failImage = [[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"no-entry" ofType:@"png"]];
         [sqlServerStatusImage setImage:failImage];
     }
     
 }
 
--(IBAction)importQCbyDirectory:(id)sender{
-    // this function imports all files found the AMS mount point directory
-    
-    // get the files in that directory
-    HEFT_fileutils *files = [[HEFT_fileutils alloc]init];
-    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
-    NSArray *selectedFiles = [files getFilesInDirectory:appDelegate.mountPointofAMSServer];
-  
-    // import those files
-    [self importFiles:selectedFiles];
+#pragma mark -
+#pragma mark - ==== Import Functions ===
+#pragma mark -
 
-}
-
--(IBAction)importQCbySelectingFiles:(id)sender{
-    
-    //Select CSV file from file system
-    
-	HEFT_fileutils *files = [[HEFT_fileutils alloc]init];
-    NSArray *selectedFiles = [files selectFiles];
-    
-    // import those files
-    [self importFiles:selectedFiles];
-    
-}
-
-
--(IBAction)timedImport:(id)sender{
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *timeInterval = [defaults objectForKey:importTimeInterval];
-    
-    _fireCount =0;
-    [self timeImportLogUpdate];
-    
-    double time = [timeInterval doubleValue]*60;
-    
-    NSLog(@"timer interval: %f", time);
-    
-    _pollingTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
-    
-    
-    
-}
+// Timed import log update loads in the timer progress view and updates stats on the timer performance
 
 -(void)timeImportLogUpdate{
     // Set up status view to display progress of import
@@ -225,12 +278,24 @@
     HEFTTimedProgressViewController *vc = [[HEFTTimedProgressViewController alloc]initWithNibName:@"HEFTTimedProgressViewController" bundle:nil];
     _statusViewController = vc;
     
+    //Get Application support directory for writing log file to
+    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+    
+    NSURL *appsup = [appDelegate applicationDirectory];
+    NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+    
+    NSString *file = [NSString stringWithContentsOfURL:bUrl encoding:NSUTF8StringEncoding error:nil];
+    
+    if(!file) {
+        
+    }
+    
     [_statusView addSubview:[vc view]];
     [[vc view]setFrame:[_statusView bounds]];
     [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
     [[vc progressIndicator] setHidden:NO];
     [[vc progressIndicator] startAnimation:self ];
-    [[vc logTextView] setString:@"Started timer"];
+    [[vc logTextView] setString:file];
     
     
     //set start date
@@ -264,7 +329,29 @@
     
 }
 
+// When timer ticks, look in the AMS directory and import anynew files
+
 - (void)timerTicked:(NSTimer*)timer {
+    //Get Application support directory for writing log file to
+    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+    
+    NSURL *appsup = [appDelegate applicationDirectory];
+    
+    NSFileHandle *aFileHandle;
+    
+    NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+    
+    aFileHandle = [NSFileHandle fileHandleForWritingToURL:bUrl error:nil];
+    
+    [aFileHandle truncateFileAtOffset:[aFileHandle seekToEndOfFile]]; //setting aFileHandle to write at the end of the file
+    
+    
+    NSString *s = [NSString stringWithFormat:@"\nCounter Fired: Fire Number: %d\n", _fireCount];
+    
+    [aFileHandle writeData:[s dataUsingEncoding:NSUTF8StringEncoding]]; //actually write the data
+    
+    // Fire count holds the number of times the timer has ticked
+    
     _fireCount++;
     NSLog(@"fire count: %d", _fireCount);
     
@@ -272,18 +359,20 @@
     [StatHat postEZStat:@"fire-count" withCount: 1.0
                 forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
     
+    // Set the status view to show timeed import interface
     [self timeImportLogUpdate];
+    
+    // Trigger the import
     [self importQCbyDirectory:self];
     
  
+    // Return the status view to the timed import update
+    // [self timeImportLogUpdate];
 
 }
 
--(IBAction)stopTimedImport:(id)sender{
-    [_pollingTimer invalidate];
-    _pollingTimer = nil;
-}
 
+// Import Files takes an array of selected files and then iterates through them and decides if already imported. If not already imported, imports file into MySQL database
 
 -(void)importFiles:(NSArray *)selectedFiles{
     
@@ -377,7 +466,7 @@
                 [vc updateStatusField:statText];
             });
             //update stats on stathat
-            NSLog(@"file import count: %d", file_import_count);
+            
             [StatHat postEZStat:@"qc-import-files" withValue:file_import_count
                         forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
             importer = nil;
@@ -387,8 +476,26 @@
     [[vc progressIndicator] setHidden:YES];
     [vc updateStatusField:@"Import Done"];
     
+    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
+    
+    NSURL *appsup = [appDelegate applicationDirectory];
+    NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
+    
+    NSString *file = [NSString stringWithContentsOfURL:bUrl encoding:NSUTF8StringEncoding error:nil];
+    
+    if(!file) {
+        
+    }
+    [[vc statusText] setString:file];
+    
+    alreadyImportedFile = nil;
+    dbFunctions = nil;
+    connection = nil;
     
 }
+
+
+// Get imported filenames returns a dictionary of filenames already imported from MySQL database
 
 -(NSDictionary *)getImportedFileNames{
     
