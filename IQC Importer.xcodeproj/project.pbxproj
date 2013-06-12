@@ -58,12 +58,8 @@
 		DE70C37C1745389F0010CEFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24D17441B6A0010CEFF /* Foundation.framework */; };
 		DE70C37D174538A30010CEFF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24B17441B6A0010CEFF /* AppKit.framework */; };
 		DE70C37F174538AF0010CEFF /* NetFS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C37E174538AF0010CEFF /* NetFS.framework */; };
-		DEAE76CE174D0A4C0005D937 /* HEFTImporterProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAE76CC174D0A4C0005D937 /* HEFTImporterProgressViewController.m */; };
-		DEAE76CF174D0A4C0005D937 /* HEFTImporterProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAE76CD174D0A4C0005D937 /* HEFTImporterProgressViewController.xib */; };
 		DEAE797A174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAE7978174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.m */; };
 		DEAE797B174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAE7979174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.xib */; };
-		DEAE7981174E6F850005D937 /* HEFTTimedProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAE797F174E6F850005D937 /* HEFTTimedProgressViewController.m */; };
-		DEAE7982174E6F850005D937 /* HEFTTimedProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEAE7980174E6F850005D937 /* HEFTTimedProgressViewController.xib */; };
 		DEAE7985174E73F30005D937 /* HEFTTimerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAE7984174E73F30005D937 /* HEFTTimerFunctions.m */; };
 		DEE2CAAC1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2CAAB1746BA9400967084 /* HEFTAMSSharePreferencesViewController.m */; };
 		DEE2CAB01746C18E00967084 /* HEFTAMSServerPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE2CAAF1746C18E00967084 /* HEFTAMSServerPreferencesView.xib */; };
@@ -233,15 +229,9 @@
 		DE70C31117441C7F0010CEFF /* NSString_MysqlEscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_MysqlEscape.h; sourceTree = "<group>"; };
 		DE70C31217441C7F0010CEFF /* NSString_MysqlEscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_MysqlEscape.m; sourceTree = "<group>"; };
 		DE70C37E174538AF0010CEFF /* NetFS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetFS.framework; path = System/Library/Frameworks/NetFS.framework; sourceTree = SDKROOT; };
-		DEAE76CB174D0A4C0005D937 /* HEFTImporterProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTImporterProgressViewController.h; sourceTree = "<group>"; };
-		DEAE76CC174D0A4C0005D937 /* HEFTImporterProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTImporterProgressViewController.m; sourceTree = "<group>"; };
-		DEAE76CD174D0A4C0005D937 /* HEFTImporterProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTImporterProgressViewController.xib; sourceTree = "<group>"; };
 		DEAE7977174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTAMSTimeImportPreferencesViewController.h; sourceTree = "<group>"; };
 		DEAE7978174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTAMSTimeImportPreferencesViewController.m; sourceTree = "<group>"; };
 		DEAE7979174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTAMSTimeImportPreferencesViewController.xib; sourceTree = "<group>"; };
-		DEAE797E174E6F850005D937 /* HEFTTimedProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTTimedProgressViewController.h; sourceTree = "<group>"; };
-		DEAE797F174E6F850005D937 /* HEFTTimedProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTTimedProgressViewController.m; sourceTree = "<group>"; };
-		DEAE7980174E6F850005D937 /* HEFTTimedProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTTimedProgressViewController.xib; sourceTree = "<group>"; };
 		DEAE7983174E73F20005D937 /* HEFTTimerFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTTimerFunctions.h; sourceTree = "<group>"; };
 		DEAE7984174E73F30005D937 /* HEFTTimerFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTTimerFunctions.m; sourceTree = "<group>"; };
 		DEE2CAAA1746BA9400967084 /* HEFTAMSSharePreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTAMSSharePreferencesViewController.h; sourceTree = "<group>"; };
@@ -526,8 +516,6 @@
 				DE160FF017580DFA00468553 /* HEFTDefaultStatusViewController.xib */,
 				DE160FE417574EB500468553 /* HEFTAboutWindowController.xib */,
 				DEE2CABC174A68BB00967084 /* HEFTIQCMainWIndow.xib */,
-				DEAE76CD174D0A4C0005D937 /* HEFTImporterProgressViewController.xib */,
-				DEAE7980174E6F850005D937 /* HEFTTimedProgressViewController.xib */,
 				DEAE797D174E6EC50005D937 /* Preference Views */,
 			);
 			name = Views;
@@ -540,10 +528,6 @@
 				DE160FE717574ED100468553 /* Window Controllers */,
 				DEAE7983174E73F20005D937 /* HEFTTimerFunctions.h */,
 				DEAE7984174E73F30005D937 /* HEFTTimerFunctions.m */,
-				DEAE76CB174D0A4C0005D937 /* HEFTImporterProgressViewController.h */,
-				DEAE76CC174D0A4C0005D937 /* HEFTImporterProgressViewController.m */,
-				DEAE797E174E6F850005D937 /* HEFTTimedProgressViewController.h */,
-				DEAE797F174E6F850005D937 /* HEFTTimedProgressViewController.m */,
 				DE14311D174BC92100DC11F2 /* HEFTImporterFunctions.h */,
 				DE14311E174BC92100DC11F2 /* HEFTImporterFunctions.m */,
 			);
@@ -649,9 +633,7 @@
 				DE70C31E17441C7F0010CEFF /* notes.txt in Resources */,
 				DEE2CAB01746C18E00967084 /* HEFTAMSServerPreferencesView.xib in Resources */,
 				DEE2CABD174A68BB00967084 /* HEFTIQCMainWIndow.xib in Resources */,
-				DEAE76CF174D0A4C0005D937 /* HEFTImporterProgressViewController.xib in Resources */,
 				DEAE797B174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.xib in Resources */,
-				DEAE7982174E6F850005D937 /* HEFTTimedProgressViewController.xib in Resources */,
 				DE160FC6175741AE00468553 /* Timetable.icns in Resources */,
 				DE160FD31757438200468553 /* bar-graph-alt@2x.png in Resources */,
 				DE160FD41757438200468553 /* bar-graph@2x.png in Resources */,
@@ -701,9 +683,7 @@
 				DEE2CAB31746C51F00967084 /* HEFTAboutViewController.m in Sources */,
 				DEE2CABB174A64F800967084 /* HEFTMainWindowController.m in Sources */,
 				DE14311F174BC92100DC11F2 /* HEFTImporterFunctions.m in Sources */,
-				DEAE76CE174D0A4C0005D937 /* HEFTImporterProgressViewController.m in Sources */,
 				DEAE797A174E59C00005D937 /* HEFTAMSTimeImportPreferencesViewController.m in Sources */,
-				DEAE7981174E6F850005D937 /* HEFTTimedProgressViewController.m in Sources */,
 				DEAE7985174E73F30005D937 /* HEFTTimerFunctions.m in Sources */,
 				DE160FC21755510100468553 /* StatHat.m in Sources */,
 				DE160FE517574EB500468553 /* HEFTAboutWindowController.m in Sources */,

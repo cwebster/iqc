@@ -9,8 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <RHPreferences/RHPreferences.h>
 
-@class HEFTImporterProgressViewController;
 @class HEFTAboutWindowController;
+@class HEFTDefaultStatusViewController;
 
 @interface HEFTMainWindowController : NSWindowController {
     RHPreferencesWindowController *_preferencesWindowController;
@@ -24,11 +24,12 @@
 @property (assign) IBOutlet NSImageView *sqlServerStatusImage;
 
 @property (weak) IBOutlet NSView *statusView;
-@property (strong) NSViewController * statusViewController;
+@property (strong) HEFTDefaultStatusViewController * statusViewController;
 @property (retain) RHPreferencesWindowController *preferencesWindowController;
 @property (strong) HEFTAboutWindowController *aboutWindowController;
 @property (strong) NSTimer *pollingTimer;
 @property (assign) int fireCount;
+@property (strong) IBOutlet NSWindow *mainWindow;
 
 
 // Button Actions

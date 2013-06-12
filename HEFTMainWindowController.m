@@ -11,14 +11,13 @@
 #import "HEFT_DatabaseFunctions.h"
 #import "HEFT_fileutils.h"
 #import "HEFTImporterFunctions.h"
-#import "HEFTImporterProgressViewController.h"
 #import "HEFT_MySQLPreferencesController.h"
 #import "HEFTAMSSharePreferencesViewController.h"
 #import "HEFTAboutViewController.h"
 #import "HEFTAMSTimeImportPreferencesViewController.h"
-#import "HEFTTimedProgressViewController.h"
 #import "StatHat.h"
 #import "HEFTAboutWindowController.h"
+#import "HEFTDefaultStatusViewController.h"
 
 
 @interface HEFTMainWindowController ()
@@ -70,9 +69,7 @@
     
     //add a default view to status area
     
-    [[_statusViewController view]removeFromSuperview];
-    
-    HEFTTimedProgressViewController *vc = [[HEFTTimedProgressViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
+    HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
     _statusViewController = vc;
     
     [_statusView addSubview:[vc view]];
@@ -145,10 +142,9 @@
 
 
 -(IBAction)timedImport:(id)sender{
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *timeInterval = [defaults objectForKey:importTimeInterval];
-    
+
     _fireCount =0;
     [self timeImportLogUpdate];
     
@@ -157,8 +153,6 @@
     NSLog(@"timer interval: %f", time);
     
     _pollingTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
-    
-    
     
 }
 
@@ -275,41 +269,34 @@
     
     [[_statusViewController view]removeFromSuperview];
     
-    HEFTTimedProgressViewController *vc = [[HEFTTimedProgressViewController alloc]initWithNibName:@"HEFTTimedProgressViewController" bundle:nil];
+    [_statusView setSubviews:[NSArray array]];
+       
+    HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
     _statusViewController = vc;
     
-    //Get Application support directory for writing log file to
-    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
-    
-    NSURL *appsup = [appDelegate applicationDirectory];
-    NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
-    
-    NSString *file = [NSString stringWithContentsOfURL:bUrl encoding:NSUTF8StringEncoding error:nil];
-    
-    if(!file) {
-        
-    }
     
     [_statusView addSubview:[vc view]];
     [[vc view]setFrame:[_statusView bounds]];
     [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
-    [[vc progressIndicator] setHidden:NO];
-    [[vc progressIndicator] startAnimation:self ];
-    [[vc logTextView] setString:file];
+    
+    
+    [[_statusViewController indeterminateProgressIndicator] setHidden:NO];
+    [[_statusViewController indeterminateProgressIndicator] startAnimation:self ];
+    [[_statusViewController statusText] setStringValue:@"Timed Import Started"];
     
     
     //set start date
     NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
                                                           dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
+                                                          timeStyle:NSDateFormatterMediumStyle];
     
-    [[vc startTimeField] setStringValue:dateString];
+    [[_statusViewController startTimeField] setStringValue:dateString];
     
     // Get prefs for polling interval
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *prefTime = [defaults objectForKey:importTimeInterval];
     
-    [[vc pollingIntervalField] setStringValue:prefTime];
+    [[_statusViewController pollingIntervalField] setStringValue:prefTime];
     
     
     NSDate *currentDate = [NSDate date];
@@ -317,14 +304,14 @@
     
     NSString *pollIntervalStr = [NSDateFormatter localizedStringFromDate:datePlusPollInterval
                                                                dateStyle:NSDateFormatterShortStyle
-                                                               timeStyle:NSDateFormatterFullStyle];
+                                                               timeStyle:NSDateFormatterMediumStyle];
     
-    [[vc countDownField] setStringValue:pollIntervalStr];
+    [[_statusViewController countDownField] setStringValue:pollIntervalStr];
     
     NSString *str;
     str = [NSString stringWithFormat:@"%d",_fireCount];
     
-    [[vc noTimerFiresField]setStringValue:str];
+    [[_statusViewController noTimerFiresField]setStringValue:str];
     
     
 }
@@ -377,17 +364,15 @@
 -(void)importFiles:(NSArray *)selectedFiles{
     
     // Set up status view to display progress of import
-    
     [[_statusViewController view]removeFromSuperview];
+    _statusViewController = nil;
     
-    HEFTImporterProgressViewController *vc = [[HEFTImporterProgressViewController alloc]initWithNibName:@"HEFTImporterProgressViewController" bundle:nil];
+    HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
     _statusViewController = vc;
     
-    [_statusView addSubview:[vc view]];
-    [[vc view]setFrame:[_statusView bounds]];
-    [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+    // Set up status view to display progress of import
     
-    [[vc progressIndicator]setMaxValue:[selectedFiles count]];
+    [[_statusViewController progressIndicator]setMaxValue:[selectedFiles count]];
     
     // Get list of already imported filenames
     NSDictionary *alreadyImportedFile = [self getImportedFileNames];
@@ -404,9 +389,9 @@
     
     double count = 0;
     
-    [[vc progressIndicator] setHidden:NO];
+    [[_statusViewController progressIndicator] setHidden:NO];
     
-    [[vc progressIndicator]setDoubleValue:count];
+    [[_statusViewController progressIndicator]setDoubleValue:count];
     
     // run whole loop in thread using GCD so UI can be updated
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
@@ -417,9 +402,9 @@
         
         int file_import_count =0;
         
-        [[vc progressIndicator] setHidden:NO];
+        [[_statusViewController progressIndicator] setHidden:NO];
         
-        [[vc progressIndicator]setDoubleValue:count];
+        [[_statusViewController progressIndicator]setDoubleValue:count];
         
         while (object = [e nextObject]) {
             
@@ -437,11 +422,11 @@
                 
             } else{
                 
-                // go ahead and import the filw
+                // go ahead and import the file
                 NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
                 NSLog(@"Import File: %@", statText);
-                [vc updateStatusField:statText];
-                [[vc view]needsDisplay];
+                [[_statusViewController statusText]setStringValue:statText];
+                [[_statusViewController view]needsDisplay];
                 
                 if ([importer importCSVFile:object mySQLConnection:connection] == YES) {
                     NSLog(@"Successful Import");
@@ -461,9 +446,9 @@
             
             //update the UI
             dispatch_async(dispatch_get_main_queue(), ^(void) {
-                [[vc progressIndicator]setDoubleValue:count];
+                [[_statusViewController progressIndicator]setDoubleValue:count];
                 NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
-                [vc updateStatusField:statText];
+                [[_statusViewController statusText]setStringValue:statText];
             });
             //update stats on stathat
             
@@ -473,20 +458,8 @@
         }
     });
     
-    [[vc progressIndicator] setHidden:YES];
-    [vc updateStatusField:@"Import Done"];
-    
-    HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
-    
-    NSURL *appsup = [appDelegate applicationDirectory];
-    NSURL *bUrl = [appsup URLByAppendingPathComponent:@"fileimportlog.txt"];
-    
-    NSString *file = [NSString stringWithContentsOfURL:bUrl encoding:NSUTF8StringEncoding error:nil];
-    
-    if(!file) {
-        
-    }
-    [[vc statusText] setString:file];
+    [[_statusViewController progressIndicator] setHidden:YES];
+    [[_statusViewController statusText]setStringValue:@"Import done"];
     
     alreadyImportedFile = nil;
     dbFunctions = nil;

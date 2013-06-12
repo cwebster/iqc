@@ -17,8 +17,7 @@
         
         NSArray* csvData;
         NSError* error;
-        int i;
-        NSInteger count;
+
         
         //Get Application support directory for writing log file to
         HEFTAppDelegate *appDelegate = (HEFTAppDelegate *)[NSApp delegate];
@@ -32,17 +31,20 @@
         // parse CSV data into csvData array
         csvData = [csvString arrayByImportingCSV];
         
+        NSEnumerator *e = [csvData objectEnumerator];
+        id object;
+        double count = 0;
+        
         //loop though imported CSV array for record values
-        for (i = 0, count = [csvData count]; i < count; i = i + 1)
-        {
-            NSString *statusText = [NSString stringWithFormat:@"%d", i];
+        while (object = [e nextObject]) {
+            NSString *statusText = [NSString stringWithFormat:@"%f", count];
             
             [self.importStatus setStringValue:statusText];
             
             //set all field values from CSV
             
             NSDictionary *insertData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [[csvData objectAtIndex: i] objectAtIndex: 0], @"testName", [[csvData objectAtIndex: i] objectAtIndex: 1], @"analyser", [[csvData objectAtIndex: i] objectAtIndex: 2], @"qclot",[[csvData objectAtIndex: i] objectAtIndex: 3], @"level",[[csvData objectAtIndex: i] objectAtIndex: 4], @"qcdate", [[csvData objectAtIndex: i] objectAtIndex: 5], @"qctime", [[csvData objectAtIndex: i] objectAtIndex: 6], @"result",   nil];
+                                        [[csvData objectAtIndex: count] objectAtIndex: 0], @"testName", [[csvData objectAtIndex: count] objectAtIndex: 1], @"analyser", [[csvData objectAtIndex: count] objectAtIndex: 2], @"qclot",[[csvData objectAtIndex: count] objectAtIndex: 3], @"level",[[csvData objectAtIndex: count] objectAtIndex: 4], @"qcdate", [[csvData objectAtIndex: count] objectAtIndex: 5], @"qctime", [[csvData objectAtIndex: count] objectAtIndex: 6], @"result",   nil];
             
             
             @try {
@@ -93,7 +95,7 @@
                 return NO;
             }
             
-            
+            count++;
             
         }
 

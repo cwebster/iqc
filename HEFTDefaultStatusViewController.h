@@ -10,4 +10,13 @@
 
 @interface HEFTDefaultStatusViewController : NSViewController
 
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+@property (assign) IBOutlet NSTextField *statusText;
+@property (assign) IBOutlet NSProgressIndicator *indeterminateProgressIndicator;
+@property (assign) IBOutlet NSTextField *startTimeField;
+@property (assign) IBOutlet NSTextField *pollingIntervalField;
+@property (assign) IBOutlet NSTextField *countDownField;
+@property (assign) IBOutlet NSTextField *noTimerFiresField;
+
+
 @end
