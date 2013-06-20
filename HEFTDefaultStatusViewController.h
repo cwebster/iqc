@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class RMSkinnedView;
 
 @interface HEFTDefaultStatusViewController : NSViewController
 
@@ -17,6 +18,7 @@
 @property (assign) IBOutlet NSTextField *pollingIntervalField;
 @property (assign) IBOutlet NSTextField *countDownField;
 @property (assign) IBOutlet NSTextField *noTimerFiresField;
+@property (assign) IBOutlet RMSkinnedView *skinnedView;
 
 
 @end

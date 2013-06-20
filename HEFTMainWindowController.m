@@ -18,6 +18,7 @@
 #import "StatHat.h"
 #import "HEFTAboutWindowController.h"
 #import "HEFTDefaultStatusViewController.h"
+#import "RMSkinnedView.h"
 
 
 @interface HEFTMainWindowController ()
@@ -26,13 +27,13 @@
 
 @implementation HEFTMainWindowController
 
-@synthesize toolbarOutlet, preferencesToolBarItem, amsServerUrlLabel, amsServerStausImage, sqlServerStatusImage;
+@synthesize toolbarOutlet, preferencesToolBarItem, amsServerUrlLabel, amsServerStausImage, sqlServerStatusImage, preferencesImportDirectory, preferencesImportFile, preferencesStartTimedImport, preferencesStopTimedImport;
 @synthesize statusView = _statusView;
 @synthesize statusViewController = _statusViewController;
 @synthesize pollingTimer = _pollingTimer;
 @synthesize fireCount = _fireCount;
 @synthesize aboutWindowController = _aboutWindowController;
-
+@synthesize circularProgressIndicator = _circularProgressIndicator;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -71,10 +72,13 @@
     
     HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
     _statusViewController = vc;
-    
+    [_statusView setColorString:@"255,128,0,0.5"];
     [_statusView addSubview:[vc view]];
     [[vc view]setFrame:[_statusView bounds]];
     [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+    [[vc skinnedView]setColorString:@"255,128,0,0.5"];
+    [[vc skinnedView]setCornerRadius:[NSNumber numberWithInt:10]];
+
 
 }
 
@@ -117,6 +121,11 @@
 
 -(IBAction)importQCbyDirectory:(id)sender{
     // this function imports all files found the AMS mount point directory
+    [preferencesStopTimedImport setEnabled:NO];
+    [preferencesStartTimedImport setEnabled:NO];
+    [preferencesImportFile setEnabled:NO];
+    [_circularProgressIndicator setHidden:NO];
+    [_circularProgressIndicator startAnimation:sender];
     
     // get the files in that directory
     HEFT_fileutils *files = [[HEFT_fileutils alloc]init];
@@ -126,9 +135,22 @@
     // import those files
     [self importFiles:selectedFiles];
     
+    
+    [preferencesStopTimedImport setEnabled:YES];
+    [preferencesStartTimedImport setEnabled:YES];
+    [preferencesImportFile setEnabled:YES];
+    [_circularProgressIndicator stopAnimation:sender];
+    [_circularProgressIndicator setHidden:YES];
+
+ 
+    
 }
 
 -(IBAction)importQCbySelectingFiles:(id)sender{
+    
+    [preferencesStopTimedImport setEnabled:NO];
+    [preferencesStartTimedImport setEnabled:NO];
+    [preferencesImportDirectory  setEnabled:NO];
     
     //Select CSV file from file system
     
@@ -138,12 +160,21 @@
     // import those files
     [self importFiles:selectedFiles];
     
+    [preferencesStopTimedImport setEnabled:YES];
+    [preferencesStartTimedImport setEnabled:YES];
+    [preferencesImportDirectory  setEnabled:YES];
+    
 }
 
 
 -(IBAction)timedImport:(id)sender{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *timeInterval = [defaults objectForKey:importTimeInterval];
+    
+    [preferencesToolBarItem setEnabled:NO];
+    [preferencesStartTimedImport setEnabled:NO];
+    [preferencesImportDirectory  setEnabled:NO];
+    [preferencesImportFile setEnabled:NO];
 
     _fireCount =0;
     [self timeImportLogUpdate];
@@ -154,12 +185,42 @@
     
     _pollingTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
     
+    
+    
 }
 
 -(IBAction)stopTimedImport:(id)sender{
+    
+    [preferencesToolBarItem setEnabled:YES];
+    [preferencesStartTimedImport setEnabled:YES];
+    [preferencesImportDirectory  setEnabled:YES];
+    [preferencesImportFile setEnabled:YES];
+    
+    
     [_pollingTimer invalidate];
     _pollingTimer = nil;
     NSLog(@"Timer Stopped");
+    
+    // Set up status view to display progress of import
+    
+    [[_statusViewController view]removeFromSuperview];
+    
+    [_statusView setSubviews:[NSArray array]];
+    
+    HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
+    _statusViewController = vc;
+    
+    
+    [_statusView addSubview:[vc view]];
+    [[vc view]setFrame:[_statusView bounds]];
+    [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+    
+    
+    [[_statusViewController indeterminateProgressIndicator] setHidden:YES];
+    
+    [[_statusViewController statusText] setStringValue:@"Timer Stopped"];
+    
+    
 }
 
 #pragma mark -
@@ -278,7 +339,7 @@
     [_statusView addSubview:[vc view]];
     [[vc view]setFrame:[_statusView bounds]];
     [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
-    
+
     
     [[_statusViewController indeterminateProgressIndicator] setHidden:NO];
     [[_statusViewController indeterminateProgressIndicator] startAnimation:self ];
@@ -354,7 +415,7 @@
     
  
     // Return the status view to the timed import update
-    // [self timeImportLogUpdate];
+    [self timeImportLogUpdate];
 
 }
 
@@ -365,13 +426,19 @@
     
     // Set up status view to display progress of import
     [[_statusViewController view]removeFromSuperview];
-    _statusViewController = nil;
+    
+    [_statusView setSubviews:[NSArray array]];
     
     HEFTDefaultStatusViewController *vc = [[HEFTDefaultStatusViewController alloc]initWithNibName:@"HEFTDefaultStatusViewController" bundle:nil];
     _statusViewController = vc;
     
-    // Set up status view to display progress of import
     
+    [_statusView addSubview:[vc view]];
+    [[vc view]setFrame:[_statusView bounds]];
+    [[vc view]setAutoresizingMask:NSViewHeightSizable | NSViewWidthSizable];
+    
+    // Set up status view to display progress of import
+    [[_statusViewController progressIndicator]setHidden:NO];
     [[_statusViewController progressIndicator]setMaxValue:[selectedFiles count]];
     
     // Get list of already imported filenames
@@ -423,15 +490,15 @@
             } else{
                 
                 // go ahead and import the file
-                NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
+                NSString *statText = [[NSString alloc]initWithFormat:@"1st file: %@", [object absoluteString]];
                 NSLog(@"Import File: %@", statText);
-                [[_statusViewController statusText]setStringValue:statText];
-                [[_statusViewController view]needsDisplay];
                 
                 if ([importer importCSVFile:object mySQLConnection:connection] == YES) {
                     NSLog(@"Successful Import");
                     file_import_count ++;
                     NSLog(@"file import count: %d", file_import_count);
+                    [StatHat postEZStat:@"qc-import-files" withValue:file_import_count
+                                forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
                     
                     //log successful import
                     [dbFunctions logImportedFiles:[object lastPathComponent] mysqlConnection:connection];
@@ -450,16 +517,15 @@
                 NSString *statText = [[NSString alloc]initWithFormat:@"Importing file: %@", [object absoluteString]];
                 [[_statusViewController statusText]setStringValue:statText];
             });
-            //update stats on stathat
-            
-            [StatHat postEZStat:@"qc-import-files" withValue:file_import_count
-                        forUser:@"craig.webster@heartofengland.nhs.uk" delegate:nil];
-            importer = nil;
+
         }
+            [[_statusViewController progressIndicator] setHidden:YES];
+            [[_statusViewController statusText]setStringValue:@"Import done"];
+            [[_statusViewController view]setNeedsDisplay:YES];
+        
     });
     
-    [[_statusViewController progressIndicator] setHidden:YES];
-    [[_statusViewController statusText]setStringValue:@"Import done"];
+
     
     alreadyImportedFile = nil;
     dbFunctions = nil;

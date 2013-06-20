@@ -7,6 +7,7 @@
 //
 
 #import "HEFTDefaultStatusViewController.h"
+#import "RMSkinnedView.h"
 
 @interface HEFTDefaultStatusViewController ()
 
@@ -21,6 +22,7 @@
 @synthesize pollingIntervalField = _pollingIntervalField;
 @synthesize countDownField = _countDownField;
 @synthesize noTimerFiresField = _noTimerFiresField;
+@synthesize skinnedView = _skinnedView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,6 +31,7 @@
     if (self) {
         // Initialization code here.
         [_statusText setStringValue:@"Import Started"];
+        [_skinnedView setColorString:@"255,128,0,0.5"];
     }
     
     return self;

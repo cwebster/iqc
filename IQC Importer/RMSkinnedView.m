@@ -21,7 +21,7 @@
 		self.roundedTopRight = NO;
 		self.fixPatternOrigin = NO;
 		self.mouseDownCanMoveWindow = NO;
-		self.dontDrawAsPattern = YES;
+		self.dontDrawAsPattern = NO;
     }
 	return self;
 }
@@ -65,6 +65,7 @@
 
 - (void)drawRect:(NSRect)rect {
 	[[NSColor clearColor] set];
+
     NSRectFillUsingOperation(rect, NSCompositeSourceOver);
 
 	NSPoint point = self.patternOffset;

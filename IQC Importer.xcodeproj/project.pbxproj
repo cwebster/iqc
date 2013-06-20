@@ -26,6 +26,7 @@
 		DE160FEB1758098700468553 /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE160FEA1758098700468553 /* person@2x.png */; };
 		DE160FF117580DFA00468553 /* HEFTDefaultStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE160FEF17580DFA00468553 /* HEFTDefaultStatusViewController.m */; };
 		DE160FF217580DFA00468553 /* HEFTDefaultStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE160FF017580DFA00468553 /* HEFTDefaultStatusViewController.xib */; };
+		DE3E0896176A08E50087D003 /* RMSkinnedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3E0895176A08E50087D003 /* RMSkinnedView.m */; };
 		DE70C24917441B6A0010CEFF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE70C24817441B6A0010CEFF /* Cocoa.framework */; };
 		DE70C25317441B6A0010CEFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE70C25117441B6A0010CEFF /* InfoPlist.strings */; };
 		DE70C25517441B6A0010CEFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE70C25417441B6A0010CEFF /* main.m */; };
@@ -105,6 +106,8 @@
 		DE160FEE17580DFA00468553 /* HEFTDefaultStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HEFTDefaultStatusViewController.h; sourceTree = "<group>"; };
 		DE160FEF17580DFA00468553 /* HEFTDefaultStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HEFTDefaultStatusViewController.m; sourceTree = "<group>"; };
 		DE160FF017580DFA00468553 /* HEFTDefaultStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HEFTDefaultStatusViewController.xib; sourceTree = "<group>"; };
+		DE3E0894176A08E50087D003 /* RMSkinnedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMSkinnedView.h; sourceTree = "<group>"; };
+		DE3E0895176A08E50087D003 /* RMSkinnedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMSkinnedView.m; sourceTree = "<group>"; };
 		DE70C24517441B6A0010CEFF /* IQC Importer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IQC Importer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE70C24817441B6A0010CEFF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DE70C24B17441B6A0010CEFF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -348,6 +351,8 @@
 		DE70C24F17441B6A0010CEFF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DE3E0894176A08E50087D003 /* RMSkinnedView.h */,
+				DE3E0895176A08E50087D003 /* RMSkinnedView.m */,
 				DE160FC01755510100468553 /* StatHat.h */,
 				DE160FC11755510100468553 /* StatHat.m */,
 				DE70C29517441C0D0010CEFF /* NSDate+NSDateCategory.h */,
@@ -688,6 +693,7 @@
 				DE160FC21755510100468553 /* StatHat.m in Sources */,
 				DE160FE517574EB500468553 /* HEFTAboutWindowController.m in Sources */,
 				DE160FF117580DFA00468553 /* HEFTDefaultStatusViewController.m in Sources */,
+				DE3E0896176A08E50087D003 /* RMSkinnedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

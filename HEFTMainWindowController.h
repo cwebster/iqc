@@ -11,6 +11,7 @@
 
 @class HEFTAboutWindowController;
 @class HEFTDefaultStatusViewController;
+@class RMSkinnedView;
 
 @interface HEFTMainWindowController : NSWindowController {
     RHPreferencesWindowController *_preferencesWindowController;
@@ -19,17 +20,23 @@
 
 @property (assign) IBOutlet NSToolbar *toolbarOutlet;
 @property (assign) IBOutlet NSToolbarItem *preferencesToolBarItem;
+@property (assign) IBOutlet NSToolbarItem *preferencesStartTimedImport;
+@property (assign) IBOutlet NSToolbarItem *preferencesStopTimedImport;
+@property (assign) IBOutlet NSToolbarItem *preferencesImportDirectory;
+@property (assign) IBOutlet NSToolbarItem *preferencesImportFile;
+
 @property (assign) IBOutlet NSTextField *amsServerUrlLabel;
 @property (assign) IBOutlet NSImageView *amsServerStausImage;
 @property (assign) IBOutlet NSImageView *sqlServerStatusImage;
 
-@property (weak) IBOutlet NSView *statusView;
+@property (weak) IBOutlet RMSkinnedView *statusView;
 @property (strong) HEFTDefaultStatusViewController * statusViewController;
 @property (retain) RHPreferencesWindowController *preferencesWindowController;
 @property (strong) HEFTAboutWindowController *aboutWindowController;
 @property (strong) NSTimer *pollingTimer;
 @property (assign) int fireCount;
 @property (strong) IBOutlet NSWindow *mainWindow;
+@property (assign) IBOutlet NSProgressIndicator *circularProgressIndicator;
 
 
 // Button Actions
